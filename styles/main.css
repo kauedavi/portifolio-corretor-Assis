@@ -584,6 +584,35 @@ section {
   opacity: 0.95;
 }
 
+#contato {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  padding: 100px 5%;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.contato h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--cor-terciaria);
+  margin: 1rem auto 0;
+  border-radius: 3px;
+}
+
+.picture img {
+  width: 100%;
+  max-width: 900px;
+  height: 60px;
+  border-radius: 12px;
+  margin: 0 auto 3rem;
+  display: block;
+  object-fit: cover;
+}
+
 /* ==================== RESPONSIVIDADE ==================== */
 @media (max-width: 992px) {
   .sobre-container {
