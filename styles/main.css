@@ -10,6 +10,7 @@
   inset: 0;
   pointer-events: none;
   z-index: 0;
+  display: none !important;
 }
 
 .corretor-bg-lines span {
@@ -321,7 +322,6 @@
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   aspect-ratio: 4/5;
 }
 
@@ -607,7 +607,7 @@ section {
   width: 100%;
   max-width: 900px;
   height: 60px;
-  border-radius: 12px;
+  border-radius: 80px;
   margin: 0 auto 3rem;
   display: block;
   object-fit: cover;
