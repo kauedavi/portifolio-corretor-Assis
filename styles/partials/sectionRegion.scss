@@ -15,12 +15,11 @@
 }
 
 .locais-header p {
-    color: rgba(250, 250, 250, 0.6);
-    font-family: 'Lora', serif;
-    font-size: 1.15rem;
-    max-width: 540px;
-    margin: 0 auto;           /* ← Adicionado */
-    padding: 0 20px;          /* opcional: respiro em mobile */
+  color: rgba(250, 250, 250, 0.6);
+  font-family: "Lora", serif;
+  font-size: 1.15rem;
+  max-width: 540px;
+  margin: 0 auto; /* ADICIONE ISSO para centralizar o bloco do parágrafo */
 }
 
 .locais-header::after {
@@ -37,7 +36,7 @@
     display: flex;
     align-items: center;
     overflow: hidden;
-    position: relative; /* já deve ter */
+    position: relative;
 }
 
 .locais-track {

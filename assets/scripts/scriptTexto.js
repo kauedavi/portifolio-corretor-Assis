@@ -1,8 +1,8 @@
 (function () {
     gsap.registerPlugin(ScrollTrigger);
 
-    const pin      = document.getElementById('corretorPin');
-    const track    = document.getElementById('corretorTrack');
+    const pin = document.getElementById('corretorPin');
+    const track = document.getElementById('corretorTrack');
     const headline = document.getElementById('corretorHeadline');
 
     if (!pin || !track || !headline) return;
@@ -49,6 +49,7 @@
             pin: true,
             scrub: 0.4,                                 // ← ultra rápido
             start: 'top top',
+            refreshPriority: -1,
             end: () => '+=' + (getTrackScroll() * 1.1 + window.innerHeight * 0.25),
             invalidateOnRefresh: true,
         }

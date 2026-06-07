@@ -99,6 +99,7 @@
   font-family: "Lora", serif;
   font-size: 1.15rem;
   max-width: 540px;
+  margin: 0 auto; /* ADICIONE ISSO para centralizar o bloco do parágrafo */
 }
 
 .locais-header::after {
@@ -115,6 +116,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  position: relative;
 }
 
 .locais-track {

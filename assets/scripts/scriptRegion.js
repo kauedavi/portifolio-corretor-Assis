@@ -29,8 +29,6 @@
             return track.scrollWidth - wrapper.offsetWidth + 40; // + margem extra de segurança
         }
 
-        // Kill triggers anteriores (importante quando recarrega)
-        ScrollTrigger.getAll().forEach(st => st.kill());
 
         // Animação de entrada dos cards
         gsap.from(cards, {
