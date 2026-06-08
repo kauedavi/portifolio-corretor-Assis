@@ -2,83 +2,27 @@
   "regioes": [
     {
       "id": 1,
-      "nome": "Itaim Bibi",
+      "nome": "Estação Brooklin",
       "tag": "Zona Sul",
-      "descricao": "Um dos bairros com maior liquidez e demanda por imóveis corporativos e residenciais de alto padrão.",
-      "imagem": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80",
+      "descricao": "Região em ascensão: novo hub empresarial de SP, com alta demanda corporativa e residencial para a classe econômica.",
+      "imagem": "assets/img/Brooklin.webp",
       "classe": "slim"
     },
     {
       "id": 2,
-      "nome": "Jardins & Jardim Europa",
-      "tag": "Jardins",
-      "descricao": "O endereço mais cobiçado de São Paulo, com valorização histórica consistente e perfil de comprador exigente.",
-      "imagem": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80",
+      "nome": "Pinheiros - Ferreira de Araújo",
+      "tag": "Zona Oeste",
+      "descricao": "Em uma rua onde epicentro gastronômico e cultural da região se destaca, com alta demanda a moradias.",
+      "imagem": "assets/img/Morumbi.webp",
       "classe": "destaque"
     },
     {
       "id": 3,
-      "nome": "Vila Nova Conceição",
-      "tag": "Zona Sul Premium",
-      "descricao": "Tranquilidade e exclusividade com imóveis de ticket elevado e baixíssima vacância.",
-      "imagem": "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=700&q=80",
-      "classe": ""
-    },
-    {
-      "id": 4,
-      "nome": "Brooklin",
-      "tag": "Zona Sul",
-      "descricao": "Hub empresarial em ascensão, com forte demanda corporativa e residencial de alto padrão.",
-      "imagem": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=600&q=80",
-      "classe": "slim"
-    },
-    {
-      "id": 5,
-      "nome": "Moema",
-      "tag": "Zona Sul",
-      "descricao": "Qualidade de vida ímpar aliada a excelente infraestrutura urbana e valorização constante.",
-      "imagem": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=700&q=80",
-      "classe": ""
-    },
-    {
-      "id": 6,
-      "nome": "Higienópolis",
-      "tag": "Zona Central",
-      "descricao": "Bairro tradicional com imóveis amplos e perfil residencial sofisticado, próximo a universidades e hospitais.",
-      "imagem": "https://images.unsplash.com/photo-1505761671935-60b3a7427bad?w=700&q=80",
-      "classe": "destaque"
-    },
-    {
-      "id": 7,
-      "nome": "Pinheiros",
+      "nome": "Estação SP-Morumbi",
       "tag": "Zona Oeste",
-      "descricao": "Mistura de vida boêmia e corporativa, com alta demanda por imóveis residenciais e comerciais.",
-      "imagem": "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=700&q=80",
-      "classe": "slim"
-    },
-    {
-      "id": 8,
-      "nome": "Perdizes",
-      "tag": "Zona Oeste",
-      "descricao": "Região residencial consolidada, com imóveis de médio e alto padrão e excelente infraestrutura.",
-      "imagem": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=700&q=80",
+      "descricao": "Shopping Butantã, Sans Club, Cobasi e Estádio MorumBIS, destacando a acessibilidade da região.",
+      "imagem": "assets/img/Pinheiros.webp",
       "classe": ""
-    },
-    {
-      "id": 9,
-      "nome": "Aclimação",
-      "tag": "Zona Central",
-      "descricao": "Área verde e tranquila próxima ao centro, valorizada por famílias e profissionais.",
-      "imagem": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=80",
-      "classe": "destaque"
-    },
-    {
-      "id": 10,
-      "nome": "Morumbi",
-      "tag": "Zona Sul",
-      "descricao": "Bairro nobre com condomínios de luxo e ampla oferta de imóveis de alto padrão.",
-      "imagem": "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800&q=80",
-      "classe": "slim"
     }
   ]
 }
