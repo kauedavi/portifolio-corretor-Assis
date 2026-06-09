@@ -49,7 +49,6 @@
             pin: true,
             scrub: 0.4,                                 // ← ultra rápido
             start: 'top top',
-            refreshPriority: -1,
             end: () => '+=' + (getTrackScroll() * 1.1 + window.innerHeight * 0.25),
             invalidateOnRefresh: true,
         }

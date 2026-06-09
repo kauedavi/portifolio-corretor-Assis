@@ -6,7 +6,7 @@
       "tag": "Zona Sul",
       "descricao": "Região em ascensão: novo hub empresarial de SP, com alta demanda corporativa e residencial para a classe econômica.",
       "imagem": "assets/img/locais/Brooklin.webp",
-      "classe": "slim"
+      "classe": "destaque"
     },
     {
       "id": 2,
@@ -22,7 +22,7 @@
       "tag": "Zona Oeste",
       "descricao": "Shopping Butantã, Sans Club, Cobasi e Estádio MorumBIS, destacando a acessibilidade da região.",
       "imagem": "assets/img/locais/Morumbi.webp",
-      "classe": ""
+      "classe": "destaque"
     },
     {
       "id": 4,
@@ -30,7 +30,7 @@
       "tag": "Zona Sul",
       "descricao": "Um bairro nobre e tradicional de São Paulo, com diversas características de arborização e em uma linha exclusiva de produtos.",
       "imagem": "assets/img/locais/bosque.jpeg",
-      "classe": "slim"
+      "classe": "destaque"
     },
     {
       "id": 5,
@@ -38,15 +38,15 @@
       "tag": "Zona Leste",
       "descricao": "Localização privilegiada: a apenas 2 minutos da futura expansão da Linha 2-Verde, em região tranquila e com fácil acesso à Radial Leste.",
       "imagem": "assets/img/locais/aricanduva.jpeg",
-      "classe": ""
+      "classe": "destaque"
     },
     {
       "id": 6,
       "nome": "Essência Vila Prudente",
       "tag": "Zona Leste",
       "descricao": "Custo-benefício imbatível em localização que só valoriza. Você fica a 16 min do Metrô Vila Prudente e 30 min da Av. Paulista.",
-      "imagem": "assets/img/locais/aricanduva.jpeg",
-      "classe": ""
+      "imagem": "assets/img/locais/essencia.jpeg",
+      "classe": "destaque"
     }
   ]
 }

@@ -1,5 +1,10 @@
+// sectionRegion.scss
+// Base 100% original mantida. Adicionadas apenas as classes do carrossel
+// (.ativo no card, botões de nav, dots visíveis, altura do wrapper).
+
+// ── Seção ────────────────────────────────────────────────────────────────────
 .locais-atuacao {
-    background-color: var(--cor-secundaria);
+    background-color: #0f0f0f;
     overflow: hidden;
     position: relative;
 }
@@ -15,11 +20,11 @@
 }
 
 .locais-header p {
-  color: rgba(250, 250, 250, 0.6);
-  font-family: "Lora", serif;
-  font-size: 1.15rem;
-  max-width: 540px;
-  margin: 0 auto; /* ADICIONE ISSO para centralizar o bloco do parágrafo */
+    color: rgba(250, 250, 250, 0.6);
+    font-family: "Lora", serif;
+    font-size: 1.15rem;
+    max-width: 540px;
+    margin: 0 auto;
 }
 
 .locais-header::after {
@@ -31,8 +36,10 @@
     margin: 2rem auto 0;
 }
 
+// ── Wrapper do carrossel ─────────────────────────────────────────────────────
+// Altura fixa para o "palco" do carrossel (antes era 100vh para pin do GSAP)
 .locais-pin-wrapper {
-    height: 100vh;
+    height: 640px;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -40,13 +47,16 @@
 }
 
 .locais-track {
-    display: flex;
+    display: flex;          // mantido para fallback; o JS muda para block
     align-items: center;
     gap: 0;
     will-change: transform;
     padding: 0 8vw;
+    width: 100%;
+    height: 100%;
 }
 
+// ── Cards — estrutura 100% original ─────────────────────────────────────────
 .regiao-card {
     flex: 0 0 auto;
     width: 380px;
@@ -55,6 +65,7 @@
     border-radius: 4px;
     overflow: hidden;
     cursor: default;
+    // O JS controla transform/opacity; transition é injetada via JS
 }
 
 .regiao-card:last-child {
@@ -82,8 +93,8 @@
     justify-content: flex-end;
     padding: 2.5rem 2rem;
     background: linear-gradient(to top,
-        rgba(15, 23, 42, 0.92) 0%,
-        rgba(15, 23, 42, 0.3) 55%,
+        rgba(15, 15, 15, 0.92) 0%,
+        rgba(15, 15, 15, 0.3) 55%,
         transparent 100%);
 }
 
@@ -98,6 +109,7 @@
     top: 1.5rem;
     right: 1.8rem;
     user-select: none;
+    transition: opacity 0.4s ease;
 }
 
 .regiao-tag {
@@ -148,6 +160,7 @@
     width: 60px;
 }
 
+// ── Variantes de tamanho ─────────────────────────────────────────────────────
 .regiao-card.destaque {
     width: 460px;
 }
@@ -168,25 +181,39 @@
     height: 460px;
 }
 
+// ── Estado ativo (card central do carrossel) ─────────────────────────────────
+// O JS adiciona .ativo ao card central — aplica o mesmo visual do :hover
+.regiao-card.ativo .regiao-desc {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.regiao-card.ativo .regiao-linha {
+    width: 60px;
+}
+
+.regiao-card.ativo .regiao-numero {
+    opacity: 0.08;
+}
+
+// ── Dots de progresso ────────────────────────────────────────────────────────
 .locais-progress {
     position: absolute;
-    bottom: 2rem;
-    right: 5%;
+    bottom: 0rem;
+    left: 50%;
+    transform: translateX(-50%);  // centralizado (era right:5% no original)
     display: flex;
     align-items: center;
     gap: 8px;
-    opacity: 0;
+    opacity: 1;                   // sempre visível no carrossel
     transition: opacity 0.4s;
-}
-
-.locais-pin-wrapper.ativo .locais-progress {
-    opacity: 1;
+    z-index: 20;
 }
 
 .progress-dots {
     display: flex;
     gap: 6px;
-    opacity: 0%;
+    opacity: 1;                   // visível (era 0% no original)
 }
 
 .progress-dot {
@@ -194,22 +221,109 @@
     height: 6px;
     border-radius: 50%;
     background: rgba(197, 168, 128, 0.3);
-    transition: background 0.3s, transform 0.3s;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, width 0.3s;
+
+    &.ativo {
+        background: var(--cor-terciaria);
+        width: 20px;
+        border-radius: 3px;
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--cor-terciaria);
+        outline-offset: 2px;
+    }
 }
 
-.progress-dot.ativo {
-    background: var(--cor-terciaria);
-    transform: scale(1.4);
+// ── Botões prev / next (injetados pelo JS) ───────────────────────────────────
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(197, 168, 128, 0.35);
+    background: rgba(15, 15, 15, 0.92);
+    color: var(--cor-primaria);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    &:hover {
+        background: rgba(197, 168, 128, 0.2);
+        border-color: var(--cor-terciaria);
+        transform: translateY(-50%) scale(1.08);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--cor-terciaria);
+        outline-offset: 2px;
+    }
+
+    &--prev { left:  clamp(10px, 3vw, 36px); }
+    &--next { right: clamp(10px, 3vw, 36px); }
 }
 
-
-
+// ── Responsividade ───────────────────────────────────────────────────────────
+// ── Responsividade ───────────────────────────────────────────────────────────
 @media (max-width: 768px) {
+    .locais-pin-wrapper {
+        height: 520px;
+    }
+
     .regiao-card          { width: 300px; }
     .regiao-card.destaque { width: 340px; }
     .regiao-card.slim     { width: 240px; }
     .regiao-img           { height: 420px; }
     .regiao-card.destaque .regiao-img { height: 460px; }
     .regiao-card.slim .regiao-img     { height: 360px; }
+
+    /* REMOVER SETAS NO CELULAR */
+    .carousel-nav-btn {
+        display: none !important;
+    }
 }
 
+@media (max-width: 480px) {
+    .locais-pin-wrapper {
+        height: 460px;
+    }
+
+    .regiao-card {
+        width: 260px;
+        margin-right: 0;
+    }
+
+    .regiao-img {
+        height: 380px;
+    }
+
+    .regiao-card.destaque {
+        width: 290px;
+    }
+
+    .regiao-card.destaque .regiao-img {
+        height: 400px;
+    }
+
+    .regiao-card.slim {
+        width: 210px;
+    }
+
+    .regiao-card.slim .regiao-img {
+        height: 320px;
+    }
+}

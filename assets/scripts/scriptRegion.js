@@ -1,112 +1,223 @@
+/**
+ * scriptRegion.js
+ * Carrossel infinito convergente — substitui GSAP + ScrollTrigger.
+ * Mantém a estrutura original dos cards (.regiao-card, .slim, .destaque, etc.)
+ * Suporte a touch/swipe e drag de mouse.
+ */
+
 (function () {
-    gsap.registerPlugin(ScrollTrigger);
+  "use strict";
 
-    let track, wrapper, dotsWrap, cards, dots = [];
+  const CONFIG = {
+    autoPlayInterval: 3400,
+    transitionMs: 560,
+    swipeThreshold: 45,
+  };
 
-    function initRegionCarousel() {
-        track    = document.getElementById('locaisTrack');
-        wrapper  = document.getElementById('locaisPin');
-        dotsWrap = document.getElementById('progressDots');
+  let currentIndex = 0;
+  let cards = [];
+  let total = 0;
+  let autoTimer = null;
+  let isPaused = false;
+  let dragStartX = 0;
+  let dragDelta = 0;
+  let isDragging = false;
 
-        if (!track || !wrapper) return;
+  /* ── Bootstrap ──────────────────────────────────────────── */
+  window.initRegionCarousel = function () {
+    const track   = document.getElementById("locaisTrack");
+    const wrapper = document.getElementById("locaisPin");
+    if (!track || !wrapper) return;
 
-        // Limpa dots anteriores
-        dotsWrap.innerHTML = '';
-        dots = [];
+    cards = Array.from(track.querySelectorAll(".regiao-card"));
+    total = cards.length;
+    if (total === 0) return;
 
-        cards = track.querySelectorAll('.regiao-card');
-        const totalCards = cards.length;
+    // Prepara o track para posicionamento absoluto dos cards
+    track.style.position = "relative";
+    track.style.display  = "block";
+    track.style.width    = "100%";
+    track.style.height   = "100%";
 
-        // Cria dots
-        for (let i = 0; i < totalCards; i++) {
-            const d = document.createElement('div');
-            d.className = 'progress-dot' + (i === 0 ? ' ativo' : '');
-            dotsWrap.appendChild(d);
-            dots.push(d);
-        }
+    // Faz cada card ser absoluto, centralizado no track
+    cards.forEach((c) => {
+      c.style.position       = "absolute";
+      c.style.left           = "50%";
+      c.style.top            = "50%";
+      c.style.marginLeft     = "";
+      c.style.marginRight    = "";
+      c.style.transformOrigin = "center center";
+      c.style.cursor         = "pointer";
+      c.addEventListener("click", (e) => {
+        // Clique em card lateral navega até ele
+        const off = getOffset(cards.indexOf(c));
+        if (off !== 0) { goTo(cards.indexOf(c)); restartAuto(); }
+      });
+    });
 
-        function getTotalScroll() {
-            return track.scrollWidth - wrapper.offsetWidth + 40; // + margem extra de segurança
-        }
+    applyLayout(false);
+    buildDots();
+    buildNavBtns(wrapper);
+    bindDrag(track, wrapper);
+    startAuto();
 
+    // Animação de entrada
+    cards.forEach((c, i) => {
+      c.style.opacity = "0";
+      c.style.transform += " translateY(50px)";
+      setTimeout(() => {
+        c.style.transition = `opacity 0.7s ease ${i * 0.08}s, transform 0.7s ease ${i * 0.08}s`;
+        c.style.opacity = "";
+        applyCardStyle(c, getOffset(i), true);
+      }, 60);
+    });
+  };
 
-        // Animação de entrada dos cards
-        gsap.from(cards, {
-            opacity: 0,
-            y: 60,
-            stagger: 0.1,
-            duration: 0.9,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: wrapper,
-                start: 'top 85%'
-            }
-        });
+  /* ── Offset lógico circular ─────────────────────────────── */
+  function getOffset(idx) {
+    let off = idx - currentIndex;
+    const half = Math.floor(total / 2);
+    while (off >  half) off -= total;
+    while (off < -half) off += total;
+    return off;
+  }
 
-        // Scroll horizontal principal
-        const scrollTween = gsap.to(track, {
-            x: () => -getTotalScroll(),
-            ease: 'none',
-            scrollTrigger: {
-                trigger: wrapper,
-                pin: true,
-                scrub: 0.4,
-                start: 'top top',
-                end: () => '+=' + getTotalScroll() * 1.1,
-                invalidateOnRefresh: true,
-                anticipatePin: 1,
-                onUpdate: (self) => {
-                    const idx = Math.round(self.progress * (totalCards - 1));
-                    dots.forEach((d, i) => d.classList.toggle('ativo', i === idx));
-                    wrapper.classList.toggle('ativo', self.progress > 0.03);
-                }
-            }
-        });
+  /* ── Layout: posiciona todos os cards ──────────────────── */
+  function applyLayout(animate) {
+    cards.forEach((c) => applyCardStyle(c, getOffset(cards.indexOf(c)), animate));
+    updateDots();
+  }
 
-        // Parallax suave nas imagens
-        cards.forEach((card) => {
-            const img = card.querySelector('.regiao-img');
-            if (img) {
-                gsap.to(img, {
-                    x: '-6%',
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: wrapper,
-                        scrub: 0.8,
-                        start: 'top top',
-                        end: () => '+=' + getTotalScroll() * 1.1,
-                    }
-                });
-            }
-        });
+  function applyCardStyle(card, offset, animate) {
+    const abs     = Math.abs(offset);
+    const visible = abs <= 2;
 
-        // Efeito de opacidade no número
-        cards.forEach((card) => {
-            const num = card.querySelector('.regiao-numero');
-            if (num) {
-                gsap.fromTo(num, 
-                    { opacity: 0.25 }, 
-                    {
-                        opacity: 0.08,
-                        ease: 'none',
-                        scrollTrigger: {
-                            trigger: wrapper,
-                            scrub: 0.6,
-                            start: 'top top',
-                            end: () => '+=' + getTotalScroll() * 1.1,
-                        }
-                    }
-                );
-            }
-        });
+    card.style.visibility    = visible ? "visible" : "hidden";
+    card.style.pointerEvents = offset === 0 ? "auto" : (abs === 1 ? "auto" : "none");
+    card.style.zIndex        = String(10 - abs);
 
-        // Refresh em resize
-        const refresh = () => ScrollTrigger.refresh();
-        window.removeEventListener('resize', refresh);
-        window.addEventListener('resize', refresh);
+    // translateX relativo ao centro do wrapper
+    // base de 52% por posição — cards de larguras diferentes ficam bem espaçados
+    const tx      = offset * 52;   // %
+    const ty      = -50;           // centraliza verticalmente
+    const scale   = offset === 0 ? 1 : abs === 1 ? 0.80 : 0.62;
+    const opacity = offset === 0 ? 1 : abs === 1 ? 0.65 : 0.28;
+
+    const dur = animate ? CONFIG.transitionMs : 0;
+    card.style.transition = dur
+      ? `transform ${dur}ms cubic-bezier(0.4,0,0.2,1), opacity ${dur}ms ease, box-shadow ${dur}ms ease`
+      : "none";
+
+    card.style.transform = `translateX(calc(-50% + ${tx}%)) translateY(${ty}%) scale(${scale})`;
+    card.style.opacity   = String(opacity);
+
+    // Destaque visual no card central
+    if (offset === 0) {
+      card.classList.add("ativo");
+      card.style.boxShadow = "0 20px 60px rgba(0,0,0,0.55)";
+      // Aciona hover visual — mostra desc
+      card.querySelector(".regiao-desc") && (card.querySelector(".regiao-desc").style.opacity = "1");
+      card.querySelector(".regiao-desc") && (card.querySelector(".regiao-desc").style.transform = "translateY(0)");
+      card.querySelector(".regiao-linha") && (card.querySelector(".regiao-linha").style.width = "60px");
+      card.querySelector(".regiao-img")  && (card.querySelector(".regiao-img").style.filter  = "brightness(0.35)");
+    } else {
+      card.classList.remove("ativo");
+      card.style.boxShadow = "";
+      card.querySelector(".regiao-desc") && (card.querySelector(".regiao-desc").style.opacity = "");
+      card.querySelector(".regiao-desc") && (card.querySelector(".regiao-desc").style.transform = "");
+      card.querySelector(".regiao-linha") && (card.querySelector(".regiao-linha").style.width = "");
+      card.querySelector(".regiao-img")  && (card.querySelector(".regiao-img").style.filter  = "");
     }
+  }
 
-    // Expõe a função para ser chamada após carregar os cards
-    window.initRegionCarousel = initRegionCarousel;
+  /* ── Navegação ──────────────────────────────────────────── */
+  function goTo(idx) {
+    currentIndex = ((idx % total) + total) % total;
+    applyLayout(true);
+  }
+  function next() { goTo(currentIndex + 1); }
+  function prev() { goTo(currentIndex - 1); }
+
+  /* ── Auto-play ──────────────────────────────────────────── */
+  function startAuto() {
+    stopAuto();
+    autoTimer = setInterval(() => { if (!isPaused) next(); }, CONFIG.autoPlayInterval);
+  }
+  function stopAuto()    { clearInterval(autoTimer); }
+  function restartAuto() { stopAuto(); startAuto(); }
+
+  /* ── Dots ───────────────────────────────────────────────── */
+  function buildDots() {
+    const wrap = document.getElementById("progressDots");
+    if (!wrap) return;
+    wrap.innerHTML = "";
+    cards.forEach((_, i) => {
+      const d = document.createElement("button");
+      d.className = "progress-dot" + (i === 0 ? " ativo" : "");
+      d.setAttribute("aria-label", `Slide ${i + 1}`);
+      d.addEventListener("click", () => { goTo(i); restartAuto(); });
+      wrap.appendChild(d);
+    });
+
+    // Torna os dots visíveis (o SCSS original tinha opacity:0 nos dots)
+    wrap.style.opacity = "1";
+    const progress = document.getElementById("locaisProgress");
+    if (progress) progress.style.opacity = "1";
+  }
+
+  function updateDots() {
+    const wrap = document.getElementById("progressDots");
+    if (!wrap) return;
+    wrap.querySelectorAll(".progress-dot").forEach((d, i) => {
+      d.classList.toggle("ativo", i === currentIndex);
+    });
+  }
+
+  /* ── Botões prev / next ─────────────────────────────────── */
+  function buildNavBtns(wrapper) {
+    if (wrapper.querySelector(".carousel-nav-btn")) return;
+
+    ["prev", "next"].forEach((dir) => {
+      const btn = document.createElement("button");
+      btn.className = `carousel-nav-btn carousel-nav-btn--${dir}`;
+      btn.setAttribute("aria-label", dir === "prev" ? "Anterior" : "Próximo");
+      btn.innerHTML =
+        dir === "prev"
+          ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+               <polyline points="15 18 9 12 15 6"></polyline></svg>`
+          : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+               <polyline points="9 18 15 12 9 6"></polyline></svg>`;
+      btn.addEventListener("click", () => { dir === "prev" ? prev() : next(); restartAuto(); });
+      wrapper.appendChild(btn);
+    });
+  }
+
+  /* ── Drag / Touch ───────────────────────────────────────── */
+  function bindDrag(track, wrapper) {
+    wrapper.addEventListener("mouseenter", () => { isPaused = true; });
+    wrapper.addEventListener("mouseleave", () => { isPaused = false; });
+
+    const start = (e) => { isDragging = true; dragStartX = getX(e); dragDelta = 0; };
+    const move  = (e) => { if (isDragging) dragDelta = getX(e) - dragStartX; };
+    const end   = ()  => {
+      if (!isDragging) return;
+      isDragging = false;
+      if (dragDelta < -CONFIG.swipeThreshold) { next(); restartAuto(); }
+      else if (dragDelta > CONFIG.swipeThreshold) { prev(); restartAuto(); }
+      dragDelta = 0;
+    };
+
+    track.addEventListener("touchstart", start, { passive: true });
+    track.addEventListener("touchmove",  move,  { passive: true });
+    track.addEventListener("touchend",   end);
+    track.addEventListener("mousedown",  start);
+    track.addEventListener("mousemove",  move);
+    track.addEventListener("mouseup",    end);
+    track.addEventListener("mouseleave", end);
+  }
+
+  function getX(e) { return e.touches ? e.touches[0].clientX : e.clientX; }
 
 })();

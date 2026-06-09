@@ -1,16 +1,22 @@
+/**
+ * regionsGerate.js
+ * Mantém a estrutura original dos cards (.regiao-card, .slim, .destaque, etc.)
+ * Chama initRegionCarousel() após gerar os cards.
+ */
+
 async function carregarRegioes() {
     try {
         const response = await fetch('data/regioes.json');
         const data = await response.json();
 
         const track = document.getElementById('locaisTrack');
-        track.innerHTML = ''; // Limpa caso tenha algo
+        track.innerHTML = '';
 
         data.regioes.forEach(regiao => {
             const cardHTML = `
                 <div class="regiao-card ${regiao.classe}">
-                    <img class="regiao-img" 
-                         src="${regiao.imagem}" 
+                    <img class="regiao-img"
+                         src="${regiao.imagem}"
                          alt="${regiao.nome} — São Paulo">
                     <div class="regiao-overlay">
                         <span class="regiao-numero">${String(regiao.id).padStart(2, '0')}</span>
@@ -24,7 +30,6 @@ async function carregarRegioes() {
             track.innerHTML += cardHTML;
         });
 
-        // Re-inicializa o carrossel/scroll se necessário
         if (typeof initRegionCarousel === 'function') {
             initRegionCarousel();
         }
@@ -34,5 +39,4 @@ async function carregarRegioes() {
     }
 }
 
-// Executa quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', carregarRegioes);
