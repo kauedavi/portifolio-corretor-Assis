@@ -1,0 +1,46 @@
+@media (max-width: 992px) {
+  .sobre-container {
+    gap: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sobre {
+    padding: 90px 5% 80px;
+  }
+
+  .sobre-container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .ladoE img {
+    max-height: 520px;
+    aspect-ratio: 16 / 13;
+  }
+
+  .sobre h2 {
+    text-align: center;
+  }
+
+  .label {
+    margin: 0 auto 1rem;
+  }
+
+  .label::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 1rem 5%;
+    justify-content: center;
+  }
+
+  header ul {
+    gap: 1.2rem;
+    font-size: 0.95rem;
+  }
+}

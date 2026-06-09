@@ -1,84 +1,263 @@
 @charset "UTF-8";
-.corretor-texto {
-  background-color: var(--cor-secundaria);
-  position: relative;
-  overflow: hidden;
+:root {
+  --cor-primaria: #FAFAFA;
+  --cor-secundaria: #0F172A;
+  --cor-texto: #1E1E24;
+  --cor-terciaria: #C5A880;
+  --cor-destaque: #38BDF8;
 }
 
-.corretor-bg-lines {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  display: none !important;
-}
-
-.corretor-bg-lines span {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(to right, transparent 0%, rgba(197, 168, 128, 0.12) 30%, rgba(197, 168, 128, 0.22) 50%, rgba(197, 168, 128, 0.12) 70%, transparent 100%);
-}
-
-.corretor-bg-lines span:nth-child(1) {
-  top: 25%;
-}
-
-.corretor-bg-lines span:nth-child(2) {
-  top: 50%;
-}
-
-.corretor-bg-lines span:nth-child(3) {
-  top: 75%;
-}
-
-.corretor-pin-wrapper {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-}
-
-.corretor-track {
-  display: flex;
-  align-items: center;
-  will-change: transform;
-  padding: 0 10vw;
-  white-space: nowrap;
-}
-
-.corretor-headline {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(3.5rem, 9vw, 9rem);
-  font-weight: 700;
-  line-height: 1;
-  color: rgba(250, 250, 250, 0.08);
-  letter-spacing: -0.01em;
-  white-space: nowrap;
-  user-select: none;
+* {
+  padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
-.corretor-headline .letra {
-  display: inline-block;
-  color: rgba(250, 250, 250, 0.08);
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: var(--cor-texto);
+  line-height: 1.6;
+  min-height: 100vh;
+  background-color: var(--cor-primaria);
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.8rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--cor-secundaria);
+}
+
+section {
+  padding: 100px 5%;
+}
+
+header {
+  background-color: var(--cor-secundaria);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1.2rem 5%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  height: 60px;
+}
+
+header li a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+header li a:hover {
+  color: var(--cor-terciaria);
+}
+
+.btn-whatsapp {
+  background-color: var(--cor-terciaria);
+  color: var(--cor-secundaria);
+  border: none;
+  padding: 1.1rem 2.8rem;
+  font-size: 1.12rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.btn-whatsapp img {
+  height: 32px;
+  width: auto;
+  filter: brightness(0.85);
+}
+
+.btn-whatsapp:hover {
+  background-color: #d4b38a;
+  transform: translateY(-4px);
+}
+
+.apresentacao {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), url("../assets/img/assis/assisBackground.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding-top: 80px;
+}
+
+.info {
+  max-width: 900px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+}
+
+.info h3 {
+  font-family: "Lora", serif;
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+  opacity: 0.95;
+}
+
+/* ==================== SEÇÃO SOBRE ==================== */
+.sobre {
+  background-color: var(--cor-primaria);
+  padding: 120px 5% 100px;
   position: relative;
+  overflow: hidden;
 }
 
-.corretor-headline .letra-espaco {
+.sobre-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.ladoE img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  aspect-ratio: 4/5;
+}
+
+.ladoD {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.sobre h2 {
+  text-align: left;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  margin-bottom: 0.5rem;
+  color: var(--cor-secundaria);
+}
+
+/* Pseudo-elemento label abaixo do título */
+.label {
   display: inline-block;
-  width: 0.32em;
+  position: relative;
+  font-family: "Lora", serif;
+  font-size: 1.1rem;
+  color: var(--cor-terciaria);
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding-bottom: 8px;
+  margin-bottom: 1rem;
 }
 
-@media (max-width: 768px) {
-  .corretor-headline {
-    font-size: clamp(2.2rem, 10vw, 4rem);
-  }
+.label::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, var(--cor-terciaria), #d4b38a);
+  border-radius: 3px;
 }
+
+.sobre p {
+  font-family: "Lora", serif;
+  font-size: 1.22rem;
+  line-height: 1.75;
+  color: var(--cor-texto);
+  max-width: 95%;
+}
+
+.sobre .destaque {
+  font-size: 1.25rem;
+  color: var(--cor-secundaria);
+  font-weight: 500;
+}
+
+.sobre ul {
+  padding-left: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.sobre li {
+  font-size: 1.2rem;
+  color: var(--cor-texto);
+  position: relative;
+  list-style-type: none;
+}
+
+.sobre li::before {
+  content: "→";
+  color: var(--cor-terciaria);
+  position: absolute;
+  left: -1.3rem;
+  font-weight: bold;
+}
+
+.sobre .fechamento {
+  font-size: 1.28rem;
+  font-weight: 500;
+  color: var(--cor-secundaria);
+  border-left: 5px solid var(--cor-terciaria);
+  padding-left: 1.5rem;
+}
+
 .locais-atuacao {
   background-color: #0f0f0f;
   overflow: hidden;
@@ -390,299 +569,86 @@
     height: 320px;
   }
 }
-/* ==================== SEÇÃO SOBRE ==================== */
-.sobre {
-  background-color: var(--cor-primaria);
-  padding: 120px 5% 100px;
+.corretor-texto {
+  background-color: var(--cor-secundaria);
   position: relative;
   overflow: hidden;
 }
 
-.sobre-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5rem;
-  align-items: center;
-}
-
-.ladoE img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  aspect-ratio: 4/5;
-}
-
-.ladoD {
-  display: flex;
-  flex-direction: column;
-  gap: 1.8rem;
-}
-
-.sobre h2 {
-  text-align: left;
-  font-size: clamp(2.4rem, 5vw, 3.4rem);
-  margin-bottom: 0.5rem;
-  color: var(--cor-secundaria);
-}
-
-/* Pseudo-elemento label abaixo do título */
-.label {
-  display: inline-block;
-  position: relative;
-  font-family: "Lora", serif;
-  font-size: 1.1rem;
-  color: var(--cor-terciaria);
-  font-weight: 500;
-  letter-spacing: 1px;
-  padding-bottom: 8px;
-  margin-bottom: 1rem;
-}
-
-.label::after {
-  content: "";
+.corretor-bg-lines {
   position: absolute;
-  bottom: 0;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  display: none !important;
+}
+
+.corretor-bg-lines span {
+  position: absolute;
   left: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(to right, var(--cor-terciaria), #d4b38a);
-  border-radius: 3px;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent 0%, rgba(197, 168, 128, 0.12) 30%, rgba(197, 168, 128, 0.22) 50%, rgba(197, 168, 128, 0.12) 70%, transparent 100%);
 }
 
-.sobre p {
-  font-family: "Lora", serif;
-  font-size: 1.22rem;
-  line-height: 1.75;
-  color: var(--cor-texto);
-  max-width: 95%;
+.corretor-bg-lines span:nth-child(1) {
+  top: 25%;
 }
 
-.sobre .destaque {
-  font-size: 1.25rem;
-  color: var(--cor-secundaria);
-  font-weight: 500;
+.corretor-bg-lines span:nth-child(2) {
+  top: 50%;
 }
 
-.sobre ul {
-  padding-left: 1.3rem;
+.corretor-bg-lines span:nth-child(3) {
+  top: 75%;
+}
+
+.corretor-pin-wrapper {
+  height: 100vh;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.sobre li {
-  font-size: 1.2rem;
-  color: var(--cor-texto);
+  align-items: center;
+  overflow: hidden;
   position: relative;
-  list-style-type: none;
+  z-index: 1;
 }
 
-.sobre li::before {
-  content: "→";
-  color: var(--cor-terciaria);
-  position: absolute;
-  left: -1.3rem;
-  font-weight: bold;
-}
-
-.sobre .fechamento {
-  font-size: 1.28rem;
-  font-weight: 500;
-  color: var(--cor-secundaria);
-  border-left: 5px solid var(--cor-terciaria);
-  padding-left: 1.5rem;
-}
-
-.contato {
-  background-color: var(--cor-secundaria);
-  color: white;
-}
-
-.contato h2 {
-  color: white;
-}
-
-.contato p {
-  text-align: center;
-  font-size: 1.3rem;
-  max-width: 700px;
-  margin: 0 auto 3rem;
-}
-
-.contato .btn-whatsapp {
-  padding: 1.2rem 3rem;
-  font-size: 1.2rem;
-}
-
-footer {
-  background: #0a1320;
-  color: #aaa;
-  text-align: center;
-  padding: 3rem 5%;
-  font-size: 0.95rem;
-}
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --cor-primaria: #FAFAFA;
-  --cor-secundaria: #0F172A;
-  --cor-texto: #1E1E24;
-  --cor-terciaria: #C5A880;
-  --cor-destaque: #38BDF8;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  color: var(--cor-texto);
-  line-height: 1.6;
-}
-
-.whatsapp-float {
-  display: flex;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 100;
-  gap: 10px; /* espaço entre os ícones */
-}
-
-.whatsapp-float a {
+.corretor-track {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 60px; /* tamanho fixo */
-  height: 60px; /* tamanho fixo */
+  will-change: transform;
+  padding: 0 10vw;
+  white-space: nowrap;
 }
 
-.whatsapp-float img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* mantém proporção sem distorcer */
-}
-
-h2 {
+.corretor-headline {
   font-family: "Playfair Display", serif;
-  font-size: 2.8rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  color: var(--cor-secundaria);
-}
-
-header {
-  background-color: var(--cor-secundaria);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 1.2rem 5%;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-header ul {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
-  align-items: center;
-  height: 60px;
-}
-
-header li a {
-  color: var(--cor-primaria);
-  text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-header li a:hover {
-  color: var(--cor-terciaria);
-}
-
-.btn-whatsapp {
-  background-color: var(--cor-terciaria);
-  color: var(--cor-secundaria);
-  border: none;
-  padding: 1.1rem 2.8rem;
-  font-size: 1.12rem;
-  font-weight: 600;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  text-decoration: none;
-  font-family: inherit;
-}
-
-.btn-whatsapp img {
-  height: 32px;
-  width: auto;
-  filter: brightness(0.85);
-}
-
-.btn-whatsapp:hover {
-  background-color: #d4b38a;
-  transform: translateY(-4px);
-}
-
-section {
-  padding: 100px 5%;
-}
-
-.apresentacao {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), url(../../assets/img/assis/assisBackground.png);
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  padding-top: 80px;
-}
-
-.info {
-  max-width: 900px;
-  padding: 0 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.info h1 {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(3.5rem, 9vw, 9rem);
   font-weight: 700;
-  margin-bottom: 1.2rem;
-  line-height: 1.1;
+  line-height: 1;
+  color: rgba(250, 250, 250, 0.08);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  user-select: none;
+  margin: 0;
 }
 
-.info h3 {
-  font-family: "Lora", serif;
-  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
-  font-weight: 400;
-  margin-bottom: 2.5rem;
-  opacity: 0.95;
+.corretor-headline .letra {
+  display: inline-block;
+  color: rgba(250, 250, 250, 0.08);
+  position: relative;
 }
 
+.corretor-headline .letra-espaco {
+  display: inline-block;
+  width: 0.32em;
+}
+
+@media (max-width: 768px) {
+  .corretor-headline {
+    font-size: clamp(2.2rem, 10vw, 4rem);
+  }
+}
 #contato {
   background-color: var(--cor-secundaria);
   color: var(--cor-primaria);
@@ -712,7 +678,49 @@ section {
   object-fit: cover;
 }
 
-/* Container posicionado no canto inferior */
+.contato p {
+  text-align: center;
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.contato .btn-whatsapp {
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+}
+
+footer {
+  background: #0a1320;
+  color: #aaa;
+  text-align: center;
+  padding: 3rem 5%;
+  font-size: 0.95rem;
+}
+
+.whatsapp-float {
+  display: flex;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 100;
+  gap: 10px;
+}
+
+.whatsapp-float a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+}
+
+.whatsapp-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .container-chat-whatsapp {
   position: fixed;
   bottom: 30px;
@@ -721,7 +729,6 @@ section {
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
-/* Botão Flutuante Redondo (O gatilho) */
 .gatilho-chat-wa {
   background: none;
   border: none;
@@ -734,7 +741,6 @@ section {
   transform: scale(1.1);
 }
 
-/* O Card do Chat */
 .card-chat-wa {
   position: absolute;
   bottom: 70px;
@@ -746,23 +752,20 @@ section {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  /* Começa invisível e com transição suave */
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Classe que ativa o card */
 .card-chat-wa.aberto {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-/* Cabeçalho do Card */
 .card-chat-header {
-  background-color: #045244; /* Verde Escuro Elegante. Altere para a cor da sua marca se quiser */
+  background-color: #045244;
   color: #ffffff;
   padding: 20px 15px;
   display: flex;
@@ -782,7 +785,6 @@ section {
   object-fit: cover;
 }
 
-/* Bolinha verde de Online */
 .status-online {
   position: absolute;
   bottom: 2px;
@@ -806,7 +808,6 @@ section {
   opacity: 0.85;
 }
 
-/* Botão de Fechar 'X' */
 .btn-fechar-chat {
   position: absolute;
   top: 15px;
@@ -824,22 +825,19 @@ section {
   opacity: 1;
 }
 
-/* Corpo do Chat (Fundo Bege) */
 .card-chat-body {
-  background-color: #e8e3dc; /* Cor idêntica à do Elementor na imagem */
+  background-color: #e8e3dc;
   padding: 25px 20px;
 }
 
-/* Balão de Mensagem */
 .balao-mensagem-wa {
   background-color: #ffffff;
   padding: 12px 16px;
-  border-radius: 0 12px 12px 12px; /* Pontas arredondadas exceto a superior esquerda */
+  border-radius: 0 12px 12px 12px;
   position: relative;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* Seta do balão puxada para a esquerda */
 .balao-mensagem-wa::before {
   content: "";
   position: absolute;
@@ -874,7 +872,6 @@ section {
   font-weight: 500;
 }
 
-/* Rodapé do Card */
 .card-chat-footer {
   background-color: #ffffff;
   padding: 15px;
@@ -882,7 +879,6 @@ section {
   justify-content: center;
 }
 
-/* Botão de Link Grande Verde */
 .btn-enviar-wa {
   display: flex;
   align-items: center;
@@ -905,7 +901,6 @@ section {
   transform: translateY(-1px);
 }
 
-/* ==================== RESPONSIVIDADE ==================== */
 @media (max-width: 992px) {
   .sobre-container {
     gap: 3.5rem;
@@ -944,5 +939,3 @@ section {
     font-size: 0.95rem;
   }
 }
-
-/*# sourceMappingURL=main.css.map */
