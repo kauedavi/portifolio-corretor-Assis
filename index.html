@@ -18,9 +18,9 @@
 <body>
     <div class="whatsapp-float">
 
-        <a href="https://www.instagram.com/mav.corretor/" target="_blank">
-            <img src="assets/img/logo/Instagram_logo.png" alt="WhatsApp" width="50" height="50">
-        </a>
+        <a onclick="toggleChatIg(event)" class="gatilho-chat-ig" style="cursor: pointer;">
+        <img src="assets/img/logo/Instagram_logo.png" alt="Instagram" width="50" height="50">
+    </a>
         <a target="_blank" onclick="toggleChat(event)" class="gatilho-chat-wa">
             <img src="assets/img/logo/whatsapp_logo.png" alt="WhatsApp" width="50" height="50">
         </a>
@@ -29,7 +29,8 @@
     <header>
         <nav>
             <ul class="menu">
-                <li><a href="#home">Home</a></li>
+                <li><img src="assets/img/logo/assis-logo.png" alt=""></li>
+                <li><a href="#home">menu</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#sobre">Plantas</a></li>
                 <li><a href="#servicos">Imóveis</a></li>
@@ -59,8 +60,7 @@
             <div class="sobre-container">
                 <div class="ladoE">
                     <img src="assets/img/assis/assis-info.png"
-                        alt="Assis - Corretor Especialista em Investimentos Imobiliários"
-                        loading="lazy">
+                        alt="Assis - Corretor Especialista em Investimentos Imobiliários" loading="lazy">
                 </div>
 
                 <div class="ladoD">
@@ -106,9 +106,13 @@
                 </div>
             </div>
 
-            <div>
-                <p>E claro, tem muito mais!</p>
-            </div>
+            <section class="mais-ofertas">
+                <div class="mais-ofertas-container">
+                    <p class="frase-final">
+                        E claro, tenho muito mais locais a oferecer!
+                    </p>
+                </div>
+            </section>
         </section>
 
         <section id="contato" class="contato">
@@ -138,7 +142,7 @@
                 <div class="corretor-track" id="corretorTrack">
                     <h2 class="corretor-headline" id="corretorHeadline"
                         aria-label="o melhor corretor de imóveis. Assis.">
-                        Provérbios 10:22 "A bênção do Senhor é que enriquece; e não traz consigo dores." 
+                        Provérbios 10:22 "A bênção do Senhor é que enriquece; e não traz consigo dores."
                     </h2>
                 </div>
             </div>
@@ -149,15 +153,15 @@
         <p>&copy; 2026 Assis Investimentos Imobiliários. Todos os direitos reservados.</p>
     </footer>
 
-    
+
     <div class="container-chat-whatsapp">
 
         <div class="card-chat-wa" id="cardChatWa">
 
             <div class="card-chat-header">
                 <div class="perfil-wrapper">
-                    <img src="assets/img/assis/assisProfile.jpeg" alt="Sua Foto" class="chat-foto-perfil" loading="lazy"> <span
-                        class="status-online"></span>
+                    <img src="assets/img/assis/assisProfile.jpeg" alt="Sua Foto" class="chat-foto-perfil"
+                        loading="lazy"> <span class="status-online"></span>
                 </div>
                 <div class="header-info">
                     <h3>Assis</h3>
@@ -184,6 +188,41 @@
         </div>
     </div>
 
+    <!-- Container Instagram Chat -->
+<div class="container-chat-instagram">
+
+    <div class="card-chat-ig" id="cardChatIg">
+
+        <div class="card-chat-header-ig">
+            <div class="perfil-wrapper-ig">
+                <img src="assets/img/assis/assisProfile.jpeg" alt="Assis" class="chat-foto-perfil-ig" loading="lazy">
+                <span class="status-online-ig"></span>
+            </div>
+            <div class="header-info-ig">
+                <h3>Assis</h3>
+                <p>Corretor Imobiliário</p>
+            </div>
+            <button class="btn-fechar-chat-ig" onclick="toggleChatIg(event)">&times;</button>
+        </div>
+
+        <div class="card-chat-body-ig">
+            <div class="balao-mensagem-ig">
+                <p class="balao-nome-ig">Assis</p>
+                <p class="balao-texto-ig">Venha conhecer mais sobre mim!</p>
+                <span class="balao-hora-ig">19:12</span>
+            </div>
+        </div>
+
+        <div class="card-chat-footer-ig">
+            <a href="https://www.instagram.com/mav.corretor/" 
+               target="_blank" 
+               class="btn-enviar-ig">
+                <img src="assets/img/logo/instagram-logo-chat.png" alt="Instagram" width="20" height="20">
+                Abrir no Instagram
+            </a>
+        </div>
+    </div>
+</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>

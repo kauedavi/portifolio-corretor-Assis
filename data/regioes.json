@@ -47,6 +47,14 @@
       "descricao": "Custo-benefício imbatível em localização que só valoriza. Você fica a 16 min do Metrô Vila Prudente e 30 min da Av. Paulista.",
       "imagem": "assets/img/locais/essencia.jpeg",
       "classe": "destaque"
+    },
+    {
+      "id": 7,
+      "nome": "Av. Gen. Edgar Facó",
+      "tag": "Zona Norte",
+      "descricao": "Localizado próximo à Freguesia do Ó, em região conhecida pela atmosfera tranquila e arborizada, característica da Zona Norte.",
+      "imagem": "assets/img/locais/essencia.jpeg",
+      "classe": "destaque"
     }
   ]
 }
