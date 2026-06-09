@@ -1,5 +1,9 @@
+/**
+ * chat-toggle.js
+ * Gerencia a abertura e fechamento dos chats WhatsApp e Instagram
+ */
+
 function toggleChat(event) {
-    // Evita comportamentos inesperados de clique
     event.stopPropagation();
     
     const card = document.getElementById("cardChatWa");
@@ -12,19 +16,6 @@ function toggleChat(event) {
     card.classList.toggle("aberto");
 }
 
-// Atualiza o horário dinamicamente ao carregar a página
-document.addEventListener("DOMContentLoaded", function () {
-    const horaSpan = document.getElementById("chatHora");
-    const agora = new Date();
-    const horas = String(agora.getHours()).padStart(2, '0');
-    const minutos = String(agora.getMinutes()).padStart(2, '0');
-    
-    if (horaSpan) {
-        horaSpan.textContent = `${horas}:${minutos}`;
-    }
-});
-
-// Toggle Instagram Chat
 function toggleChatIg(event) {
     event.stopPropagation();
     const cardIg = document.getElementById("cardChatIg");
@@ -37,7 +28,6 @@ function toggleChatIg(event) {
     cardIg.classList.toggle("aberto");
 }
 
-// Fecha os chats ao clicar fora deles
 function closeChatsOnOutsideClick(event) {
     const clickedInsideChat = event.target.closest("#cardChatWa, #cardChatIg, .gatilho-chat-wa, .gatilho-chat-ig");
     if (!clickedInsideChat) {
@@ -53,15 +43,25 @@ function closeChatsOnOutsideClick(event) {
     }
 }
 
-document.addEventListener("click", closeChatsOnOutsideClick);
+function initChatTime() {
+    const horaSpan = document.getElementById("chatHora");
+    const agora = new Date();
+    const horas = String(agora.getHours()).padStart(2, '0');
+    const minutos = String(agora.getMinutes()).padStart(2, '0');
+    
+    if (horaSpan) {
+        horaSpan.textContent = `${horas}:${minutos}`;
+    }
 
-// Atualiza hora do Instagram também
-document.addEventListener("DOMContentLoaded", function () {
     const horaIg = document.querySelector(".balao-hora-ig");
     if (horaIg) {
-        const agora = new Date();
-        const horas = String(agora.getHours()).padStart(2, '0');
-        const minutos = String(agora.getMinutes()).padStart(2, '0');
         horaIg.textContent = `${horas}:${minutos}`;
     }
-});
+}
+
+function initChatToggle() {
+    document.addEventListener("click", closeChatsOnOutsideClick);
+    initChatTime();
+}
+
+export { toggleChat, toggleChatIg, initChatToggle };

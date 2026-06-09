@@ -1,6 +1,9 @@
-(function () {
-    gsap.registerPlugin(ScrollTrigger);
+/**
+ * text-animation.js
+ * Anima o texto do corretor com GSAP ScrollTrigger
+ */
 
+function initTextAnimation() {
     const pin = document.getElementById('corretorPin');
     const track = document.getElementById('corretorTrack');
     const headline = document.getElementById('corretorHeadline');
@@ -47,7 +50,7 @@
         scrollTrigger: {
             trigger: pin,
             pin: true,
-            scrub: 0.4,                                 // ← ultra rápido
+            scrub: 0.4,
             start: 'top top',
             end: () => '+=' + (getTrackScroll() * 1.1 + window.innerHeight * 0.25),
             invalidateOnRefresh: true,
@@ -74,4 +77,6 @@
     });
 
     window.addEventListener('resize', () => ScrollTrigger.refresh());
-})();
+}
+
+export { initTextAnimation };

@@ -19,8 +19,8 @@
     <div class="whatsapp-float">
 
         <a onclick="toggleChatIg(event)" class="gatilho-chat-ig" style="cursor: pointer;">
-        <img src="assets/img/logo/Instagram_logo.png" alt="Instagram" width="50" height="50">
-    </a>
+            <img src="assets/img/logo/Instagram_logo.png" alt="Instagram" width="50" height="50">
+        </a>
         <a target="_blank" onclick="toggleChat(event)" class="gatilho-chat-wa">
             <img src="assets/img/logo/whatsapp_logo.png" alt="WhatsApp" width="50" height="50">
         </a>
@@ -147,90 +147,84 @@
                 </div>
             </div>
         </section>
+
+        <div class="container-chat-whatsapp">
+
+            <div class="card-chat-wa" id="cardChatWa">
+
+                <div class="card-chat-header">
+                    <div class="perfil-wrapper">
+                        <img src="assets/img/assis/assisProfile.jpeg" alt="Sua Foto" class="chat-foto-perfil"
+                            loading="lazy"> <span class="status-online"></span>
+                    </div>
+                    <div class="header-info">
+                        <h3>Assis</h3>
+                        <p>Especialista Imobiliário</p>
+                    </div>
+                    <button class="btn-fechar-chat" onclick="toggleChat(event)">&times;</button>
+                </div>
+
+                <div class="card-chat-body">
+                    <div class="balao-mensagem-wa">
+                        <p class="balao-nome">Assis</p>
+                        <p class="balao-texto">Olá, como posso ajudar?</p>
+                        <span class="balao-hora" id="chatHora">19:12</span>
+                    </div>
+                </div>
+
+                <div class="card-chat-footer">
+                    <a href="https://wa.me/5511962084734?text=Olá,%20Assis!%20Gostaria%20de%20falar%20sobre%20os%20imóveis."
+                        target="_blank" class="btn-enviar-wa">
+                        <img src="assets/img/logo/whatsapp-white-icon.webp" alt="WhatsApp" width="20" height="20">
+                        Falar no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Container Instagram Chat -->
+        <div class="container-chat-instagram">
+
+            <div class="card-chat-ig" id="cardChatIg">
+
+                <div class="card-chat-header-ig">
+                    <div class="perfil-wrapper-ig">
+                        <img src="assets/img/assis/assisProfile.jpeg" alt="Assis" class="chat-foto-perfil-ig"
+                            loading="lazy">
+                        <span class="status-online-ig"></span>
+                    </div>
+                    <div class="header-info-ig">
+                        <h3>Assis</h3>
+                        <p>Corretor Imobiliário</p>
+                    </div>
+                    <button class="btn-fechar-chat-ig" onclick="toggleChatIg(event)">&times;</button>
+                </div>
+
+                <div class="card-chat-body-ig">
+                    <div class="balao-mensagem-ig">
+                        <p class="balao-nome-ig">Assis</p>
+                        <p class="balao-texto-ig">Venha conhecer mais sobre mim!</p>
+                        <span class="balao-hora-ig">19:12</span>
+                    </div>
+                </div>
+
+                <div class="card-chat-footer-ig">
+                    <a href="https://www.instagram.com/mav.corretor/" target="_blank" class="btn-enviar-ig">
+                        <img src="assets/img/logo/instagram-logo-chat.png" alt="Instagram" width="20" height="20">
+                        Abrir no Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2026 Assis Investimentos Imobiliários. Todos os direitos reservados.</p>
     </footer>
 
-
-    <div class="container-chat-whatsapp">
-
-        <div class="card-chat-wa" id="cardChatWa">
-
-            <div class="card-chat-header">
-                <div class="perfil-wrapper">
-                    <img src="assets/img/assis/assisProfile.jpeg" alt="Sua Foto" class="chat-foto-perfil"
-                        loading="lazy"> <span class="status-online"></span>
-                </div>
-                <div class="header-info">
-                    <h3>Assis</h3>
-                    <p>Especialista Imobiliário</p>
-                </div>
-                <button class="btn-fechar-chat" onclick="toggleChat(event)">&times;</button>
-            </div>
-
-            <div class="card-chat-body">
-                <div class="balao-mensagem-wa">
-                    <p class="balao-nome">Assis</p>
-                    <p class="balao-texto">Olá, como posso ajudar?</p>
-                    <span class="balao-hora" id="chatHora">19:12</span>
-                </div>
-            </div>
-
-            <div class="card-chat-footer">
-                <a href="https://wa.me/5511962084734?text=Olá,%20Assis!%20Gostaria%20de%20falar%20sobre%20os%20imóveis."
-                    target="_blank" class="btn-enviar-wa">
-                    <img src="assets/img/logo/whatsapp-white-icon.webp" alt="WhatsApp" width="20" height="20">
-                    Falar no WhatsApp
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Container Instagram Chat -->
-<div class="container-chat-instagram">
-
-    <div class="card-chat-ig" id="cardChatIg">
-
-        <div class="card-chat-header-ig">
-            <div class="perfil-wrapper-ig">
-                <img src="assets/img/assis/assisProfile.jpeg" alt="Assis" class="chat-foto-perfil-ig" loading="lazy">
-                <span class="status-online-ig"></span>
-            </div>
-            <div class="header-info-ig">
-                <h3>Assis</h3>
-                <p>Corretor Imobiliário</p>
-            </div>
-            <button class="btn-fechar-chat-ig" onclick="toggleChatIg(event)">&times;</button>
-        </div>
-
-        <div class="card-chat-body-ig">
-            <div class="balao-mensagem-ig">
-                <p class="balao-nome-ig">Assis</p>
-                <p class="balao-texto-ig">Venha conhecer mais sobre mim!</p>
-                <span class="balao-hora-ig">19:12</span>
-            </div>
-        </div>
-
-        <div class="card-chat-footer-ig">
-            <a href="https://www.instagram.com/mav.corretor/" 
-               target="_blank" 
-               class="btn-enviar-ig">
-                <img src="assets/img/logo/instagram-logo-chat.png" alt="Instagram" width="20" height="20">
-                Abrir no Instagram
-            </a>
-        </div>
-    </div>
-</div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="assets/scripts/scriptRegion.js"></script>
-    <script src="assets/scripts/script-Pop-up.js"></script>
-    <script src="assets/scripts/scriptTexto.js"></script>
-    <script src="assets/scripts/regionsGerate.js"></script>
-
+    <script type="module" src="assets/scripts/app.js"></script>
 </body>
 
 </html>

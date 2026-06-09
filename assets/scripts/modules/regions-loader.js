@@ -1,7 +1,6 @@
 /**
- * regionsGerate.js
- * Mantém a estrutura original dos cards (.regiao-card, .slim, .destaque, etc.)
- * Chama initRegionCarousel() após gerar os cards.
+ * regions-loader.js
+ * Carrega regiões do JSON e renderiza os cards
  */
 
 async function carregarRegioes() {
@@ -38,4 +37,4 @@ async function carregarRegioes() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', carregarRegioes);
+export { carregarRegioes };
