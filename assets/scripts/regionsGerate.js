@@ -19,7 +19,6 @@ async function carregarRegioes() {
                          src="${regiao.imagem}"
                          alt="${regiao.nome} — São Paulo">
                     <div class="regiao-overlay">
-                        <span class="regiao-numero">${String(regiao.id).padStart(2, '0')}</span>
                         <span class="regiao-tag">${regiao.tag}</span>
                         <div class="regiao-linha"></div>
                         <h3 class="regiao-nome">${regiao.nome}</h3>

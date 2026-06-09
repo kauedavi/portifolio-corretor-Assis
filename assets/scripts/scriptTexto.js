@@ -74,4 +74,12 @@
     });
 
     window.addEventListener('resize', () => ScrollTrigger.refresh());
+
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) {
+            ScrollTrigger.refresh();
+        }
+    });
+
+    window.addEventListener('focus', () => ScrollTrigger.refresh());
 })();
