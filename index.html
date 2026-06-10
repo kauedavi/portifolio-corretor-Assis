@@ -13,6 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
 <body>
@@ -27,16 +28,41 @@
     </div>
 
     <header>
-        <nav>
-            <ul class="menu">
-                <li><img src="assets/img/logo/assis-logo.png" alt=""></li>
-                <li><a href="#home">menu</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#sobre">Plantas</a></li>
-                <li><a href="#servicos">Imóveis</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
+        <nav class="nav-container">
+            <div class="nav-logo-left">
+                <a class="site-logo" href="#"><img src="assets/img/logo/assis-logo.png" alt="Assis"></a>
+            </div>
+
+            <button id="mobileMenuToggle" class="mobile-menu-toggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Abrir menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+
+            <div class="nav-inner">
+                <ul class="menu">
+                    <li><a href="#home">home</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#sobre">Plantas</a></li>
+                    <li><a href="#servicos">Imóveis</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+
+            </div>
         </nav>
+
+        <div id="mobileNav" class="mobile-nav-overlay" aria-hidden="true">
+            <div class="mobile-nav-panel">
+                <button id="mobileMenuClose" class="mobile-menu-close" aria-label="Fechar menu">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+                <ul class="mobile-menu-list">
+                    <li><a href="#home">home</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#sobre">Plantas</a></li>
+                    <li><a href="#servicos">Imóveis</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+        </div>
     </header>
 
     <main>
