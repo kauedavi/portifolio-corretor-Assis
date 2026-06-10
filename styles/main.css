@@ -919,6 +919,10 @@ header li a:hover {
   font-size: 1.2rem;
 }
 
+.gold-text {
+  color: var(--cor-terciaria);
+}
+
 footer {
   background: #0a1320;
   color: #aaa;
