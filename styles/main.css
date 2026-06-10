@@ -1141,7 +1141,7 @@ footer {
 
 .card-chat-ig {
   position: absolute;
-  bottom: 70px;
+  bottom: 20px;
   right: 0;
   width: 340px;
   background: white;
@@ -1150,7 +1150,6 @@ footer {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 420px;
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
@@ -1200,7 +1199,6 @@ footer {
 .card-chat-body-ig {
   background-color: #f0f2f5;
   padding: 20px;
-  flex: 1;
   overflow-y: auto;
 }
 
@@ -1310,12 +1308,28 @@ footer {
 }
 @media (max-width: 768px) {
   header {
-    padding: 1rem 5%;
-    justify-content: center;
+    padding: 0.8rem 1.5rem;
+  }
+  .nav-inner {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+  .nav-container {
+    gap: 1rem;
   }
   header ul {
     gap: 1.2rem;
     font-size: 0.95rem;
+  }
+}
+@media (max-width: 992px) {
+  header ul {
+    display: none;
+  }
+  .mobile-menu-toggle {
+    display: block;
   }
 }
 

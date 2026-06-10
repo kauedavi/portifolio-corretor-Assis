@@ -10,7 +10,7 @@
 
 .card-chat-ig {
     position: absolute;
-    bottom: 70px;
+    bottom: 20px;
     right: 0;
     width: 340px;
     background: white;
@@ -19,7 +19,6 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: 420px;
     opacity: 0;
     transform: translateY(20px);
     pointer-events: none;
@@ -69,7 +68,6 @@
 .card-chat-body-ig {
     background-color: #f0f2f5;
     padding: 20px;
-    flex: 1;
     overflow-y: auto;
 }
 

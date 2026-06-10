@@ -35,12 +35,33 @@
 
 @media (max-width: 768px) {
   header {
-    padding: 1rem 5%;
-    justify-content: center;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .nav-inner {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+
+  .nav-container {
+    gap: 1rem;
   }
 
   header ul {
     gap: 1.2rem;
     font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 992px) {
+  header ul {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
   }
 }
