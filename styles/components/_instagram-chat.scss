@@ -1,0 +1,150 @@
+/* ==================== CHAT INSTAGRAM ==================== */
+
+.container-chat-instagram {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    z-index: 10000;
+    width: 340px;
+}
+
+.card-chat-ig {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 340px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 420px;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card-chat-ig.aberto {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+/* Header Instagram */
+.card-chat-header-ig {
+    background: linear-gradient(135deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.perfil-wrapper-ig {
+    position: relative;
+    margin-right: 12px;
+}
+
+.chat-foto-perfil-ig {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,255,255,0.9);
+}
+
+.status-online-ig {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background-color: #4ade80;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+/* Body */
+.card-chat-body-ig {
+    background-color: #f0f2f5;
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.balao-mensagem-ig {
+    background-color: white;
+    padding: 12px 16px;
+    border-radius: 18px 18px 18px 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    max-width: 85%;
+}
+
+.balao-nome-ig {
+    font-size: 13px;
+    color: #833AB4;
+    margin: 0 0 4px 0;
+    font-weight: 600;
+}
+
+.balao-texto-ig {
+    margin: 0 0 6px 0;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.balao-hora-ig {
+    font-size: 11px;
+    color: #999;
+    text-align: right;
+}
+
+/* Footer */
+.card-chat-footer-ig {
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #eee;
+}
+
+.btn-enviar-ig {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #405DE6, #E1306C);
+    color: white;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-fechar-chat-ig {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.btn-enviar-ig:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(225, 48, 108, 0.4);
+}
+
+/* Botão flutuante Instagram */
+.gatilho-chat-ig {
+    transition: transform 0.3s ease;
+}
+
+.gatilho-chat-ig:hover {
+    transform: scale(1.1);
+}

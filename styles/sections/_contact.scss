@@ -1,0 +1,50 @@
+#contato {
+  background-color: var(--cor-secundaria);
+  color: var(--cor-primaria);
+  padding: 100px 5%;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.contato h2{
+  color: var(--cor-primaria);
+}
+.contato h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--cor-terciaria);
+  margin: 1rem auto -1rem;
+  border-radius: 3px;
+}
+
+.picture img {
+  width: 100%;
+  max-width: 350px;
+  height: 100%;
+  border-radius: 6px;
+  margin: 0 auto 3rem;
+  display: block;
+  object-fit: cover;
+}
+
+.contato p {
+  text-align: center;
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+}
+
+.contato .btn-whatsapp {
+  padding: 1.2rem 3rem;
+  font-size: 1.2rem;
+}
+
+footer {
+  background: #0a1320;
+  color: #aaa;
+  text-align: center;
+  padding: 3rem 5%;
+  font-size: 0.95rem;
+}
