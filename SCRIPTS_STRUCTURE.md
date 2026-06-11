@@ -1,55 +1,134 @@
-# Estrutura de Scripts Reorganizada
+# Estrutura de Módulos JavaScript
 
-## Overview
-Todos os scripts foram convertidos para módulos ES6 e unificados em um único ponto de entrada: `app.js`.
+## 📋 Arquitetura
 
-## Estrutura
+O projeto utiliza **ES Modules** com um ponto de entrada centralizado que orquestra todos os módulos.
 
+## 📦 Módulos
+
+### `app.js` — Orquestrador Central
+
+Carrega e inicializa todos os módulos na sequência correta.
+
+```javascript
+window.toggleChat = toggleChat;
+window.toggleChatIg = toggleChatIg;
+window.initRegionCarousel = initRegionCarousel;
 ```
-assets/scripts/
-├── app.js                    (Entrada principal - orquestra todos os módulos)
-└── modules/
-    ├── regions-loader.js     (Carrega regiões do JSON e renderiza cards)
-    ├── region-carousel.js    (Carrossel infinito convergente)
-    ├── chat-toggle.js        (Gerencia chats WhatsApp e Instagram)
-    └── text-animation.js     (Animações de texto com GSAP)
-```
 
-## Como Funciona
+**Funções globais exportadas:**
+- `toggleChat(event)` — Abre/fecha chat WhatsApp
+- `toggleChatIg(event)` — Abre/fecha chat Instagram
+- `initRegionCarousel()` — Inicializa carrossel
 
-### app.js
-- **Responsabilidade**: Orquestra a inicialização de todos os módulos
-- **Exporta funções globais**: `toggleChat`, `toggleChatIg`, `initRegionCarousel`
-- **Executa na inicialização**: 
-  1. Inicializa sistema de chats
-  2. Carrega regiões (que dispara o carrossel)
-  3. Inicializa animações de texto
+---
 
-### modules/regions-loader.js
-- Fetch do arquivo `data/regioes.json`
-- Renderização dos cards de regiões
-- Chamada automática de `initRegionCarousel()`
+### `modules/regions-loader.js`
 
-### modules/region-carousel.js
-- Carrossel infinito com scroll convergente
-- Suporte a touch, swipe e drag de mouse
+Carrega regiões do arquivo `data/regioes.json` e renderiza cards dinamicamente.
+
+**Exporta:** `carregarRegioes()`
+
+**Responsabilidades:**
+- Fetch assíncrono de dados
+- Renderização em HTML
+- Dispara `initRegionCarousel()`
+
+---
+
+### `modules/region-carousel.js`
+
+Carrossel infinito convergente com suporte a touch, swipe e drag.
+
+**Exporta:** `initRegionCarousel()`
+
+**Recursos:**
 - Auto-play com intervalo configurável
-- Sistema de dots de navegação
-- Botões prev/next
+- Navegação com prev/next
+- Indicadores (dots)
+- Transformações 3D escaladas
+- Pausa ao hover
 
-### modules/chat-toggle.js
-- Toggle dos cards de chat (WhatsApp e Instagram)
-- Fecha chats ao clicar fora
-- Atualiza horário dinamicamente
+---
 
-### modules/text-animation.js
-- Animação de letra por letra com GSAP
-- Usa ScrollTrigger para efeito de scroll
-- Cores e efeitos de brilho customizados
+### `modules/chat-toggle.js`
 
-## Integração no HTML
+Gerencia abertura e fechamento dos chats flutuantes.
 
-O arquivo `index.html` agora carrega apenas:
+**Exporta:**
+- `toggleChat(event)` — WhatsApp
+- `toggleChatIg(event)` — Instagram
+- `initChatToggle()` — Inicializa listeners
+
+**Recursos:**
+- Toggle com mutual exclusion
+- Fecha ao clicar fora
+- Hora dinâmica
+
+---
+
+### `modules/text-animation.js`
+
+Dispara animações CSS quando elementos entram na viewport.
+
+**Exporta:** `initTextAnimation()`
+
+**Implementação:** IntersectionObserver
+
+---
+
+### `modules/mobile-menu.js`
+
+Drawer responsivo com suporte a teclado (ESC) e focus trap.
+
+**Exporta:** `initMobileMenu()`
+
+**Acessibilidade:**
+- `aria-expanded`, `aria-hidden`
+- Suporte a ESC
+- Gerenciamento de `overflow`
+
+---
+
+### `modules/plants-loader.js`
+
+Carrega propriedades do arquivo `data/plants.json` e renderiza dinamicamente.
+
+**Exporta:**
+- `carregarPlantas()` — Fetch e renderização
+- `initPlantas(options)` — Observer de animações
+
+**Opções customizáveis:**
+```javascript
+initPlantas({
+  selector: '.planta[data-animate]',
+  threshold: 0.18,
+  visibleClass: 'planta--visible'
+})
+```
+
+---
+
+## 🔄 Fluxo de Inicialização
+
+```
+DOMContentLoaded
+    ↓
+initChatToggle() ..................... Listeners de chat
+    ↓
+initMobileMenu() ..................... Menu mobile
+    ↓
+await carregarPlantas() .............. Fetch + render JSON
+    ↓
+initPlantas() ........................ Observer animações
+    ↓
+await carregarRegioes() .............. Fetch + render JSON
+    ├── initRegionCarousel() ......... Carrossel automático
+    ↓
+initTextAnimation() .................. Animações GSAP
+```
+
+## 📡 Integração no HTML
 
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -57,42 +136,35 @@ O arquivo `index.html` agora carrega apenas:
 <script type="module" src="assets/scripts/app.js"></script>
 ```
 
-## Funções Globais
+## ✏️ Adicionar Novo Módulo
 
-As seguintes funções continuam acessíveis globalmente (para uso em `onclick` no HTML):
+1. Crie arquivo em `assets/scripts/modules/novo-modulo.js`:
 
-- `toggleChat(event)` - Abre/fecha chat WhatsApp
-- `toggleChatIg(event)` - Abre/fecha chat Instagram
-- `initRegionCarousel()` - Inicializa o carrossel (chamado automaticamente)
-
-## Benefícios
-
-✅ Código modularizado e bem organizado
-✅ Cada módulo tem uma responsabilidade única
-✅ Fácil manutenção e expansão
-✅ Evita poluição do escopo global
-✅ Carregamento mais eficiente
-✅ Melhor estrutura para testes e debugging
-
-## Como Adicionar Novos Módulos
-
-1. Crie um novo arquivo em `assets/scripts/modules/`
-2. Exporte as funções necessárias com `export`
-3. Importe em `app.js`
-4. Inicialize no `DOMContentLoaded` se necessário
-
-Exemplo:
 ```javascript
-// novo-modulo.js
 export function meuModulo() {
-  // sua lógica aqui
+  // implementação
 }
+```
 
-// No app.js
+2. Importe em `app.js`:
+
+```javascript
 import { meuModulo } from './modules/novo-modulo.js';
-// ...
-document.addEventListener('DOMContentLoaded', () => {
+```
+
+3. Inicialize no `DOMContentLoaded`:
+
+```javascript
+document.addEventListener('DOMContentLoaded', async () => {
   // ... código existente
   meuModulo();
 });
 ```
+
+## 🎯 Princípios de Design
+
+✅ **Single Responsibility** — Cada módulo tem uma função clara
+✅ **No Global Pollution** — Apenas funções essenciais no escopo global
+✅ **Async-First** — Carregamento de dados sem bloquear UI
+✅ **Progressive Enhancement** — Funciona sem JS (HTML/CSS válido)
+✅ **Acessibilidade** — ARIA attributes e suporte a teclado

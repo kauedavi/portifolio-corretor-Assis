@@ -1,6 +1,7 @@
 /**
- * chat-toggle.js
- * Gerencia a abertura e fechamento dos chats WhatsApp e Instagram
+ * Gerencia abertura e fechamento dos chats WhatsApp e Instagram.
+ * Fornece funções de toggle e listeners para interação do usuário.
+ * @exports toggleChat, toggleChatIg, initChatToggle
  */
 
 function toggleChat(event) {

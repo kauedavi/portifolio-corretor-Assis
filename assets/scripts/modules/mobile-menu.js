@@ -1,4 +1,7 @@
-// Módulo de menu mobile (drawer)
+/**
+ * Menu mobile responsivo com suporte a teclado e acessibilidade.
+ * @exports initMobileMenu
+ */
 export function initMobileMenu() {
   const toggle = document.getElementById('mobileMenuToggle');
   const overlay = document.getElementById('mobileNav');

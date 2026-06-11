@@ -1,25 +1,3 @@
-// ================================================================
-// _plantas.scss
-// Section de plantas do portfólio do Corretor Assis
-//
-// Paleta extraída do projeto original:
-//   $color-bg-light   → fundo claro da section padrão
-//   $color-bg-blue    → fundo escuro da variante .blue
-//   $color-accent     → dourado/âmbar do CTA e badges
-//   $color-text-dark  → títulos sobre fundo claro
-//   $color-text-light → textos sobre fundo azul escuro
-//
-// Variações de layout:
-//   .planta            → imagem esquerda  (slide da esquerda)
-//   .planta--reverse   → imagem direita   (slide da direita)
-//   .planta--center    → imagem acima     (fade + rise)
-//
-// Animações controladas por IntersectionObserver (JS no HTML):
-//   data-animate="slide-left"  → translateX(-60px) → 0
-//   data-animate="slide-right" → translateX(+60px) → 0
-//   data-animate="fade-rise"   → translateY(40px)  → 0
-// ================================================================
-
 // ── Tokens ──────────────────────────────────────────────────────
 $color-bg-light: #f5f3ef;
 $color-bg-blue: #0d1b2a;
@@ -33,7 +11,7 @@ $color-white: #ffffff;
 
 $radius-badge: 4px;
 $transition: 0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
-$fade-height: 80px; // altura do degradê de transição entre faixas
+$fade-height: 80px;
 
 // ── Keyframes das animações ──────────────────────────────────────
 @keyframes plantas-slide-left {
@@ -72,13 +50,11 @@ $fade-height: 80px; // altura do degradê de transição entre faixas
   }
 }
 
-// ── Section wrapper ──────────────────────────────────────────────
 .plantas {
   background-color: $color-white;
   overflow: hidden;
 }
 
-// ── Header da section ────────────────────────────────────────────
 .plantas__header {
   text-align: center;
   padding: 96px 24px 64px;
@@ -103,27 +79,23 @@ $fade-height: 80px; // altura do degradê de transição entre faixas
   line-height: 1.6;
 }
 
-// ── Container de cards ───────────────────────────────────────────
 .container-plantas {
   display: flex;
   flex-direction: column;
   // sem gap: as faixas ficam adjacentes; o degradê faz a transição visual
 }
 
-// ── Card base (faixa full-width) ──────────────────────────────────
 .planta {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 64px;
-  // padding vertical generoso; horizontal centraliza o conteúdo
   padding: 80px max(48px, calc((100% - 1100px) / 2));
   background: $color-white;
   position: relative;
   overflow: hidden;
   width: 100%;
 
-  // Degradê de transição na borda inferior (funde com a faixa seguinte)
   &::after {
     content: '';
     position: absolute;
@@ -131,16 +103,12 @@ $fade-height: 80px; // altura do degradê de transição entre faixas
     left: 0;
     right: 0;
     height: $fade-height;
-    // de transparente (cor atual) → para a cor da faixa seguinte
-    // como não sabemos a cor vizinha no CSS puro, usamos uma máscara
-    // de opacidade que suaviza a borda inferior de forma neutra
     background: linear-gradient(to bottom,
         transparent 0%,
         rgba(#000, 0.03) 100%);
     pointer-events: none;
   }
 
-  // Estado inicial: oculto
   opacity: 0;
 
   &[data-animate="slide-left"] {
@@ -169,13 +137,11 @@ $fade-height: 80px; // altura do degradê de transição entre faixas
     }
   }
 
-  // Sem borda lateral nas divs brancas (padrão)
   &::before {
     display: none;
   }
 }
 
-// ── Variação: imagem à direita ────────────────────────────────────
 .planta--reverse {
   .planta__imagem {
     order: 2;
@@ -186,7 +152,6 @@ $fade-height: 80px; // altura do degradê de transição entre faixas
   }
 }
 
-// ── Variação: imagem acima (centralizada) ────────────────────────
 .planta--center {
   grid-template-columns: 1fr;
   padding-inline: max(48px, calc((100% - 600px) / 2));
@@ -211,11 +176,8 @@ $fade-height: 80px; // altura do degradê de transição entre faixas
   }
 }
 
-// ── Tema escuro: .blue ────────────────────────────────────────────
 .planta.blue {
   background: $color-bg-blue;
-
-  // Degradê inferior ajustado para o fundo azul
   &::after {
     background: linear-gradient(to bottom,
         rgba($color-bg-blue, 0) 0%,
@@ -251,12 +213,10 @@ $fade-height: 80px; // altura do degradê de transição entre faixas
   }
 }
 
-// ── Bloco de imagem ───────────────────────────────────────────────
 .planta__imagem {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  // altura fixa padroniza todas as imagens independente de proporção
   height: 640px;
 
   img {
@@ -272,13 +232,11 @@ $fade-height: 80px; // altura do degradê de transição entre faixas
   }
 }
 
-// na variação center a imagem é mais estreita, mantém a mesma altura
 .planta--center .planta__imagem {
   height: 340px;
   max-width: 420px;
 }
 
-// ── Badge sobre a imagem ──────────────────────────────────────────
 .planta__badge {
   position: absolute;
   top: 12px;
@@ -295,7 +253,6 @@ $fade-height: 80px; // altura do degradê de transição entre faixas
   pointer-events: none;
 }
 
-// ── Bloco de descrição ────────────────────────────────────────────
 .planta__descricao {
   display: flex;
   flex-direction: column;
@@ -333,7 +290,6 @@ $fade-height: 80px; // altura do degradê de transição entre faixas
   margin: 0;
 }
 
-// ── CTA ───────────────────────────────────────────────────────────
 .planta__cta {
   display: inline-block;
   margin-top: 8px;

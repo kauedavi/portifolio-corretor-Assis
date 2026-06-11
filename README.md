@@ -1,58 +1,82 @@
-**Portfólio — Corretor Assis**
+# Portfólio Imobiliário — Assis
 
-Site estático para apresentação profissional do corretor Assis, com catálogo de locais/ofertas, chats de contato e animações. O projeto é modular, sem build obrigatório — basta abrir o site em um servidor estático ou diretamente no navegador.
+Site responsivo para apresentação profissional, catálogo de propriedades e canais de contato direto.
 
-**Principais Tecnologias**
-- **HTML5**: estrutura das páginas ([index.html](index.html)).
-- **CSS / SCSS**: estilos em `styles/` (origem em SCSS, arquivo compilado: [styles/main.css](styles/main.css)).
-- **JavaScript (ES Modules)**: ponto de entrada [assets/scripts/app.js](assets/scripts/app.js) e módulos em [assets/scripts/modules/](assets/scripts/modules/).
-- **GSAP**: bibliotecas de animação carregadas via CDN.
+## 🏗️ Stack Tecnológico
 
-**Estrutura Resumida**
-- **[index.html](index.html)** — Página inicial com seções: apresentação, sobre, locais de atuação, contato e chats.
-- **[pages/imoveis.html](pages/imoveis.html)** — Página de listagem de imóveis.
-- **[assets/img/](assets/img/)** — Imagens e logos usados no site.
-- **[assets/scripts/app.js](assets/scripts/app.js)** — Orquestra os módulos e exporta funções globais (`toggleChat`, `toggleChatIg`, `initRegionCarousel`).
-- **[assets/scripts/modules/regions-loader.js](assets/scripts/modules/regions-loader.js)** — Carrega `data/regioes.json` e renderiza cards.
-- **[assets/scripts/modules/region-carousel.js](assets/scripts/modules/region-carousel.js)** — Lógica do carrossel.
-- **[assets/scripts/modules/chat-toggle.js](assets/scripts/modules/chat-toggle.js)** — Toggle dos chats WhatsApp/Instagram.
-- **[assets/scripts/modules/text-animation.js](assets/scripts/modules/text-animation.js)** — Animações com GSAP.
-- **[data/regioes.json](data/regioes.json)** — Fonte de dados para as regiões exibidas.
+- **HTML5** — Estrutura semântica
+- **SCSS** — Estilos com arquitetura modular
+- **JavaScript (ES Modules)** — Lógica interativa e carregamento dinâmico
+- **GSAP 3.12** — Animações via CDN
 
-**Como usar (local)**
-1. Abrir o arquivo `index.html` diretamente no navegador (funcional para uso local simples).
-2. Recomendo rodar um servidor estático para evitar restrições de CORS ao carregar JSON:
+## 📁 Estrutura do Projeto
+
+```
+├── index.html                 # Página inicial
+├── pages/imoveis.html         # Catálogo de propriedades
+├── assets/
+│   ├── img/                   # Imagens e logos
+│   └── scripts/
+│       ├── app.js             # Orquestrador de módulos
+│       └── modules/           # Módulos isolados
+├── data/
+│   ├── regioes.json           # Dados de regiões
+│   └── plants.json            # Dados de propriedades
+└── styles/
+    ├── main.scss              # Entrada SCSS
+    └── main.css               # Compilado (produção)
+```
+
+## 🚀 Como Usar
+
+### Desenvolvimento Local
 
 ```bash
-# com Python 3
+# Python 3
 python -m http.server 8000
 
-# ou usando npx serve
+# Ou com Node.js
 npx serve .
 ```
 
-3. Para recompilar o SCSS (opcional), instale o `sass` (Dart Sass) e rode:
+Acesse `http://localhost:8000`
+
+### Compilar SCSS
 
 ```bash
 sass styles/main.scss styles/main.css --no-source-map --style=compressed
 ```
 
-**Fluxo de dados e pontos de edição**
-- Atualize listagens de regiões/locais em [data/regioes.json](data/regioes.json).
-- Adicione/atualize imagens em [assets/img/](assets/img/).
-- Crie/ajuste módulos JS em [assets/scripts/modules/](assets/scripts/modules/) e importe em [assets/scripts/app.js](assets/scripts/app.js).
+## ✨ Funcionalidades
 
-**Funcionalidades atuais**
-- Carrossel de regiões gerado dinamicamente a partir de `data/regioes.json`.
-- Chats flutuantes para WhatsApp e Instagram com toggles (`toggleChat`, `toggleChatIg`).
-- Animações de texto e scroll via GSAP.
+- ✅ Carrossel de regiões com suporte a touch/swipe
+- ✅ Chats flutuantes (WhatsApp e Instagram)
+- ✅ Menu mobile responsivo
+- ✅ Animações de texto ao entrar na viewport
+- ✅ Carregamento dinâmico de dados via JSON
 
-**Contribuindo / Próximos passos sugeridos**
-- Adicionar filtros e paginação na lista de imóveis.
-- Preparar pipeline de build (npm + scripts) se desejar automatizar compilação SCSS e minificação.
+## 📝 Editar Conteúdo
 
-**Autor**
-Desenvolvido por Kaue Davi — mantenha contato para alterações ou dúvidas.
+| Item | Arquivo |
+|------|---------|
+| Regiões/Ofertas | `data/regioes.json` |
+| Propriedades | `data/plants.json` |
+| Textos e HTML | `index.html`, `pages/*.html` |
+| Estilos | `styles/*.scss` |
+
+## 📱 Compatibilidade
+
+- ✅ Desktop (1440px+)
+- ✅ Tablet (768px - 1023px)
+- ✅ Mobile (< 768px)
+
+## ⚡ Performance
+
+- Sem dependências obrigatórias
+- Carregamento assíncrono
+- CSS minificado
+- Imagens otimizadas
 
 ---
-Atualizado automaticamente para refletir a estrutura e os scripts atuais do projeto.
+
+**Desenvolvido por:** Kaue Davi

@@ -347,7 +347,6 @@ header li a:hover {
   color: var(--cor-secundaria);
 }
 
-/* Pseudo-elemento label abaixo do título */
 .label {
   display: inline-block;
   position: relative;
@@ -713,7 +712,6 @@ header li a:hover {
   padding: 0 20px;
 }
 
-/* Efeito sutil de destaque */
 .frase-final::before,
 .frase-final::after {
   content: '"';
@@ -733,7 +731,6 @@ header li a:hover {
   right: 0;
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
   .mais-ofertas {
     padding: 80px 5%;
@@ -793,9 +790,7 @@ header li a:hover {
     height: 320px;
   }
 }
-/* ============================================
-   CORRETOR TEXTO — VERSÃO FUNDO BRANCO
-   ============================================ */
+/* ==================== CORRETOR TEXTO — VERSÃO FUNDO BRANCO ======================== */
 .corretor-texto {
   background-color: #ffffff;
   position: relative;
@@ -803,7 +798,6 @@ header li a:hover {
   min-height: 100vh;
 }
 
-/* --- Linhas decorativas de fundo --- */
 .corretor-bg-lines {
   position: absolute;
   inset: 0;
@@ -831,7 +825,6 @@ header li a:hover {
   top: 75%;
 }
 
-/* --- Wrapper e track --- */
 .corretor-pin-wrapper {
   height: 100vh;
   width: 100%;
@@ -854,7 +847,6 @@ header li a:hover {
   padding: 0 2vw;
 }
 
-/* --- Headline principal --- */
 .corretor-headline {
   font-family: "Playfair Display", Georgia, serif;
   font-size: clamp(2.2rem, 5.5vw, 5rem);
@@ -866,7 +858,6 @@ header li a:hover {
   margin: 0;
 }
 
-/* Label: "Provérbios 10:22" */
 .corretor-headline .ch-label {
   display: block;
   color: rgba(30, 20, 10, 0.22);
@@ -878,7 +869,6 @@ header li a:hover {
   margin-bottom: 0.5em;
 }
 
-/* Texto principal com gradiente animado — dourado claro */
 .corretor-headline .ch-main {
   display: block;
   background: linear-gradient(90deg, #c8a052 0%, #f0d080 15%, #c8a052 30%, #f0d080 43%, #fae8a0 50%, #f0d080 57%, #c8a052 70%, #f0d080 85%, #c8a052 100%);
@@ -889,7 +879,6 @@ header li a:hover {
   animation: corretorShimmer 10s ease-in-out infinite;
 }
 
-/* Linha divisória */
 .corretor-headline .ch-divider {
   display: block;
   width: 0;
@@ -902,7 +891,6 @@ header li a:hover {
   animation: corretorLine 1.8s ease forwards;
 }
 
-/* Subtítulo itálico */
 .corretor-headline .ch-sub {
   display: block;
   color: rgba(30, 20, 10, 0.18);
@@ -959,8 +947,7 @@ header li a:hover {
 }
 @media (max-width: 480px) and (max-width: 480px) {
   .corretor-headline {
-    font-size: clamp(1.6rem, 8vw, 2.4rem); /* antes */
-    font-size: clamp(2rem, 9.5vw, 3rem); /* depois */
+    font-size: clamp(2rem, 9.5vw, 3rem);
   }
 }
 @media (max-width: 480px) {
@@ -982,8 +969,7 @@ header li a:hover {
 }
 @media (max-width: 360px) {
   .corretor-headline {
-    font-size: clamp(1.4rem, 9vw, 2rem); /* antes */
-    font-size: clamp(1.8rem, 10vw, 2.4rem); /* depois */
+    font-size: clamp(1.8rem, 10vw, 2.4rem);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -1615,7 +1601,6 @@ footer {
   pointer-events: auto;
 }
 
-/* Header Instagram */
 .card-chat-header-ig {
   background: linear-gradient(135deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C);
   color: white;
@@ -1648,7 +1633,6 @@ footer {
   border-radius: 50%;
 }
 
-/* Body */
 .card-chat-body-ig {
   background-color: #f0f2f5;
   padding: 20px;
@@ -1682,7 +1666,6 @@ footer {
   text-align: right;
 }
 
-/* Footer */
 .card-chat-footer-ig {
   padding: 15px;
   background: white;
@@ -1722,7 +1705,6 @@ footer {
   box-shadow: 0 6px 15px rgba(225, 48, 108, 0.4);
 }
 
-/* Botão flutuante Instagram */
 .gatilho-chat-ig {
   transition: transform 0.3s ease;
 }

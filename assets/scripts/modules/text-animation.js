@@ -1,3 +1,7 @@
+/**
+ * Observa elemento na viewport e aplica classe de animação.
+ * @exports initTextAnimation
+ */
 function initTextAnimation() {
   const divider = document.getElementById('corretorDivider');
   if (!divider) return;

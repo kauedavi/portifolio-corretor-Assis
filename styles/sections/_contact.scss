@@ -49,7 +49,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;           // espaço entre o ícone e o email
+  gap: 12px;
   margin: 1.5rem 0;
 
   .material-symbols-outlined {
@@ -64,7 +64,6 @@
     white-space: nowrap;
   }
 
-  // Opcional: hover effect
   &:hover {
     .material-symbols-outlined {
       transform: scale(1.1);

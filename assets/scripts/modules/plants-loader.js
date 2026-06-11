@@ -1,7 +1,11 @@
+/**
+ * Carrega propriedades do arquivo JSON e renderiza cards dinâmicos.
+ * @async
+ * @exports carregarPlantas
+ */
 export async function carregarPlantas() {
     const container = document.getElementById('container-plantas');
     
-    // Evita erros caso a seção não exista na página atual
     if (!container) return;
 
     try {
@@ -17,7 +21,6 @@ export async function carregarPlantas() {
         let htmlContent = '';
 
         plantas.forEach(planta => {
-            // Verifica se tem badge para não criar tag vazia
             const badgeHtml = planta.badge 
                 ? `<span class="planta__badge">${planta.badge}</span>` 
                 : '';
@@ -38,7 +41,6 @@ export async function carregarPlantas() {
             `;
         });
 
-        // Injeta tudo de uma vez para melhor performance
         container.innerHTML = htmlContent;
 
     } catch (erro) {
@@ -47,36 +49,20 @@ export async function carregarPlantas() {
     }
 }
 
-
-
-// ================================================================
-// plantas.js
-// Módulo de animação da section #plantas
-//
-// Uso:
-//   import { initPlantas } from './plantas.js';
-//   initPlantas();
-//
-//   // ou com seletor/threshold customizados:
-//   initPlantas({ selector: '.planta[data-animate]', threshold: 0.25 });
-// ================================================================
-
+/**
+ * Observa elementos `.planta[data-animate]` e aplica classe ao entrar na viewport.
+ * @param {object} [options] - Configurações opcionais
+ * @param {string} [options.selector] - Seletor dos elementos a observar
+ * @param {number} [options.threshold] - Fração visível para disparar (0–1)
+ * @param {string} [options.visibleClass] - Classe CSS adicionada
+ * @exports initPlantas
+ */
 const DEFAULTS = {
-  selector:  '.planta[data-animate]',
+  selector: '.planta[data-animate]',
   threshold: 0.18,
   visibleClass: 'planta--visible',
 };
 
-/**
- * Observa cada card `.planta[data-animate]` e adiciona
- * a classe `planta--visible` quando ele entra na viewport,
- * disparando a animação CSS correspondente.
- *
- * @param {object} [options]
- * @param {string} [options.selector]     - Seletor dos elementos a observar.
- * @param {number} [options.threshold]    - Fração visível para disparar (0–1).
- * @param {string} [options.visibleClass] - Classe CSS adicionada ao tornar-se visível.
- */
 export function initPlantas(options = {}) {
   const { selector, threshold, visibleClass } = { ...DEFAULTS, ...options };
 

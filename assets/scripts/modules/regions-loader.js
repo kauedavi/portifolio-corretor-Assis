@@ -1,8 +1,9 @@
 /**
- * regions-loader.js
- * Carrega regiões do JSON e renderiza os cards
+ * Carrega regiões do arquivo JSON e renderiza cards dinâmicos.
+ * Dispara inicialização do carrossel automaticamente após renderização.
+ * @async
+ * @exports carregarRegioes
  */
-
 async function carregarRegioes() {
     try {
         const responseUrl = new URL('../../../data/regioes.json', import.meta.url);

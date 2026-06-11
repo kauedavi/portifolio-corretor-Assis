@@ -1,7 +1,3 @@
-// sectionRegion.scss
-// Base 100% original mantida. Adicionadas apenas as classes do carrossel
-// (.ativo no card, botões de nav, dots visíveis, altura do wrapper).
-
 // ── Seção ────────────────────────────────────────────────────────────────────
 .locais-atuacao {
     background-color: #0f0f0f;
@@ -36,8 +32,6 @@
     margin: 2rem auto 0;
 }
 
-// ── Wrapper do carrossel ─────────────────────────────────────────────────────
-// Altura fixa para o "palco" do carrossel (antes era 100vh para pin do GSAP)
 .locais-pin-wrapper {
     height: 640px;
     display: flex;
@@ -47,7 +41,7 @@
 }
 
 .locais-track {
-    display: flex;          // mantido para fallback; o JS muda para block
+    display: flex;
     align-items: center;
     gap: 0;
     will-change: transform;
@@ -56,7 +50,6 @@
     height: 100%;
 }
 
-// ── Cards — estrutura 100% original ─────────────────────────────────────────
 .regiao-card {
     flex: 0 0 auto;
     width: 380px;
@@ -65,7 +58,6 @@
     border-radius: 4px;
     overflow: hidden;
     cursor: default;
-    // O JS controla transform/opacity; transition é injetada via JS
 }
 
 .regiao-card:last-child {
@@ -93,9 +85,9 @@
     justify-content: flex-end;
     padding: 2.5rem 2rem;
     background: linear-gradient(to top,
-        rgba(15, 15, 15, 0.92) 0%,
-        rgba(15, 15, 15, 0.3) 55%,
-        transparent 100%);
+            rgba(15, 15, 15, 0.92) 0%,
+            rgba(15, 15, 15, 0.3) 55%,
+            transparent 100%);
 }
 
 .regiao-numero {
@@ -160,7 +152,6 @@
     width: 60px;
 }
 
-// ── Variantes de tamanho ─────────────────────────────────────────────────────
 .regiao-card.destaque {
     width: 460px;
 }
@@ -181,8 +172,6 @@
     height: 460px;
 }
 
-// ── Estado ativo (card central do carrossel) ─────────────────────────────────
-// O JS adiciona .ativo ao card central — aplica o mesmo visual do :hover
 .regiao-card.ativo .regiao-desc {
     opacity: 1;
     transform: translateY(0);
@@ -196,16 +185,15 @@
     opacity: 0.08;
 }
 
-// ── Dots de progresso ────────────────────────────────────────────────────────
 .locais-progress {
     position: absolute;
     bottom: 0rem;
     left: 50%;
-    transform: translateX(-50%);  // centralizado (era right:5% no original)
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     gap: 8px;
-    opacity: 1;                   // sempre visível no carrossel
+    opacity: 1;
     transition: opacity 0.4s;
     z-index: 20;
 }
@@ -213,7 +201,7 @@
 .progress-dots {
     display: flex;
     gap: 6px;
-    opacity: 1;                   // visível (era 0% no original)
+    opacity: 1;
 }
 
 .progress-dot {
@@ -238,7 +226,6 @@
     }
 }
 
-// ── Botões prev / next (injetados pelo JS) ───────────────────────────────────
 .carousel-nav-btn {
     position: absolute;
     top: 50%;
@@ -273,8 +260,13 @@
         outline-offset: 2px;
     }
 
-    &--prev { left:  clamp(10px, 3vw, 36px); }
-    &--next { right: clamp(10px, 3vw, 36px); }
+    &--prev {
+        left: clamp(10px, 3vw, 36px);
+    }
+
+    &--next {
+        right: clamp(10px, 3vw, 36px);
+    }
 }
 
 /* ==================== SEÇÃO "TEM MUITO MAIS" ==================== */
@@ -315,7 +307,6 @@
     padding: 0 20px;
 }
 
-/* Efeito sutil de destaque */
 .frase-final::before,
 .frase-final::after {
     content: '"';
@@ -335,30 +326,48 @@
     right: 0;
 }
 
-/* Responsivo */
+
+
+
+// ── Responsividade ───────────────────────────────────────────────────────────
 @media (max-width: 768px) {
     .mais-ofertas {
         padding: 80px 5%;
     }
-    
+
     .frase-final {
         font-size: clamp(1.4rem, 5vw, 2rem);
     }
 }
 
-// ── Responsividade ───────────────────────────────────────────────────────────
-// ── Responsividade ───────────────────────────────────────────────────────────
 @media (max-width: 768px) {
     .locais-pin-wrapper {
         height: 520px;
     }
 
-    .regiao-card          { width: 300px; }
-    .regiao-card.destaque { width: 340px; }
-    .regiao-card.slim     { width: 240px; }
-    .regiao-img           { height: 420px; }
-    .regiao-card.destaque .regiao-img { height: 460px; }
-    .regiao-card.slim .regiao-img     { height: 360px; }
+    .regiao-card {
+        width: 300px;
+    }
+
+    .regiao-card.destaque {
+        width: 340px;
+    }
+
+    .regiao-card.slim {
+        width: 240px;
+    }
+
+    .regiao-img {
+        height: 420px;
+    }
+
+    .regiao-card.destaque .regiao-img {
+        height: 460px;
+    }
+
+    .regiao-card.slim .regiao-img {
+        height: 360px;
+    }
 
     /* REMOVER SETAS NO CELULAR */
     .carousel-nav-btn {

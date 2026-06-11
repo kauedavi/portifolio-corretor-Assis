@@ -1,6 +1,4 @@
-/* ============================================
-   CORRETOR TEXTO — VERSÃO FUNDO BRANCO
-   ============================================ */
+/* ==================== CORRETOR TEXTO — VERSÃO FUNDO BRANCO ======================== */
 
 .corretor-texto {
   background-color: #ffffff;
@@ -8,8 +6,6 @@
   overflow: hidden;
   min-height: 100vh;
 }
-
-/* --- Linhas decorativas de fundo --- */
 
 .corretor-bg-lines {
   position: absolute;
@@ -37,8 +33,6 @@
 .corretor-bg-lines span:nth-child(2) { top: 50%; }
 .corretor-bg-lines span:nth-child(3) { top: 75%; }
 
-/* --- Wrapper e track --- */
-
 .corretor-pin-wrapper {
   height: 100vh;
   width: 100%;
@@ -61,8 +55,6 @@
   padding: 0 2vw;
 }
 
-/* --- Headline principal --- */
-
 .corretor-headline {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: clamp(2.2rem, 5.5vw, 5rem);
@@ -74,8 +66,6 @@
   margin: 0;
 }
 
-/* Label: "Provérbios 10:22" */
-
 .corretor-headline .ch-label {
   display: block;
   color: rgba(30, 20, 10, 0.22);
@@ -86,8 +76,6 @@
   text-transform: uppercase;
   margin-bottom: 0.5em;
 }
-
-/* Texto principal com gradiente animado — dourado claro */
 
 .corretor-headline .ch-main {
   display: block;
@@ -110,8 +98,6 @@
   animation: corretorShimmer 10s ease-in-out infinite;
 }
 
-/* Linha divisória */
-
 .corretor-headline .ch-divider {
   display: block;
   width: 0;
@@ -123,8 +109,6 @@
 .corretor-headline .ch-divider.is-visible {
   animation: corretorLine 1.8s ease forwards;
 }
-
-/* Subtítulo itálico */
 
 .corretor-headline .ch-sub {
   display: block;
@@ -182,8 +166,7 @@
 
  @media (max-width: 480px) {
   .corretor-headline {
-    font-size: clamp(1.6rem, 8vw, 2.4rem); /* antes */
-    font-size: clamp(2rem, 9.5vw, 3rem);   /* depois */
+    font-size: clamp(2rem, 9.5vw, 3rem);
   }
 }
 
@@ -204,8 +187,7 @@
 
 @media (max-width: 360px) {
   .corretor-headline {
-    font-size: clamp(1.4rem, 9vw, 2rem); /* antes */
-    font-size: clamp(1.8rem, 10vw, 2.4rem); /* depois */
+    font-size: clamp(1.8rem, 10vw, 2.4rem);
   }
 }
 
