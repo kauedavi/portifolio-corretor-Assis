@@ -273,7 +273,7 @@ header li a:hover {
 }
 
 .apresentacao {
-  background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), url("../assets/img/assis/assisBackground.png");
+  background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), url("../assets/img/assis/assisBackground.webp");
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -1616,8 +1616,8 @@ footer {
 }
 
 .chat-foto-perfil-ig {
-  width: 48px;
-  height: 48px;
+  width: 58px;
+  height: 58px;
   border-radius: 50%;
   border: 3px solid rgba(255, 255, 255, 0.9);
 }

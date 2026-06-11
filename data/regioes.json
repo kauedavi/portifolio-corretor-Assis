@@ -29,7 +29,7 @@
       "nome": "Bosque da Saúde",
       "tag": "Zona Sul",
       "descricao": "Um bairro nobre e tradicional de São Paulo, com diversas características de arborização e em uma linha exclusiva de produtos.",
-      "imagem": "assets/img/locais/bosque.jpeg",
+      "imagem": "assets/img/locais/bosque.webp",
       "classe": "destaque"
     },
     {
@@ -37,7 +37,7 @@
       "nome": "Estação Aricanduva",
       "tag": "Zona Leste",
       "descricao": "Localização privilegiada: a apenas 2 minutos da futura expansão da Linha 2-Verde, em região tranquila e com fácil acesso à Radial Leste.",
-      "imagem": "assets/img/locais/aricanduva.jpeg",
+      "imagem": "assets/img/locais/aricanduva.webp",
       "classe": "destaque"
     },
     {
@@ -45,7 +45,7 @@
       "nome": "Essência Vila Prudente",
       "tag": "Zona Leste",
       "descricao": "Custo-benefício imbatível em localização que só valoriza. Você fica a 16 min do Metrô Vila Prudente e 30 min da Av. Paulista.",
-      "imagem": "assets/img/locais/essencia.jpeg",
+      "imagem": "assets/img/locais/essencia.webp",
       "classe": "destaque"
     },
     {
@@ -53,7 +53,7 @@
       "nome": "Av. Gen. Edgar Facó",
       "tag": "Zona Norte",
       "descricao": "Localizado próximo à Freguesia do Ó, em região conhecida pela atmosfera tranquila e arborizada, característica da Zona Norte.",
-      "imagem": "assets/img/locais/edgar.jpeg",
+      "imagem": "assets/img/locais/edgar.webp",
       "classe": "destaque"
     }
   ]
