@@ -22,6 +22,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     // 2. SÓ DEPOIS inicializa o Observer (agora os elementos existem no DOM)
     initPlantas();
     
-    carregarRegioes(); // Se essa também usar fetch, lembre-se do await!
+    await carregarRegioes();
     initTextAnimation();
 });

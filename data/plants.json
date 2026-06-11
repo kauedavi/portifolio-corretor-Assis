@@ -9,7 +9,7 @@
     "tipologia": "Tipologia",
     "titulo": "Studio",
     "descricao": "Um local compacto ideal para morar sozinho, a união de praticidade e conforto. (descrição generica)",
-    "ctaUrl": "#contato",
+    "ctaUrl": "#contato-focus",
     "ctaTexto": "Saiba mais"
   },
   {
@@ -22,7 +22,7 @@
     "tipologia": "Tipologia",
     "titulo": "1 Quarto com varanda",
     "descricao": "Espaço pensado para casais ou quem deseja um ambiente separado para descanso e trabalho. (descrição generica)",
-    "ctaUrl": "#contato",
+    "ctaUrl": "#contato-focus",
     "ctaTexto": "Saiba mais"
   },
   {
@@ -35,7 +35,7 @@
     "tipologia": "Tipologia",
     "titulo": "2 Dormitórios com 2 Varandas",
     "descricao": "Ideal para famílias, com áreas bem distribuídas e acabamento de alto padrão. (descrição generica)",
-    "ctaUrl": "#contato",
+    "ctaUrl": "#contato-focus",
     "ctaTexto": "Saiba mais"
   },
   {
@@ -48,7 +48,7 @@
     "tipologia": "Tipologia",
     "titulo": "3 Dormitórios com Varandão e Suíte",
     "descricao": "Um local compacto ideal para morar sozinho, a união de praticidade e conforto. (descrição generica)",
-    "ctaUrl": "#contato",
+    "ctaUrl": "#contato-focus",
     "ctaTexto": "Saiba mais"
   },
   {
@@ -61,7 +61,7 @@
     "tipologia": "Tipologia",
     "titulo": "2 Dormitórios com 1 Varandão",
     "descricao": "Espaço pensado para casais ou quem deseja um ambiente separado para descanso e trabalho. (descrição generica)",
-    "ctaUrl": "#contato",
+    "ctaUrl": "#contato-focus",
     "ctaTexto": "Saiba mais"
   }
 ]

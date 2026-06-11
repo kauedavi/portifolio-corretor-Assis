@@ -5,7 +5,13 @@
 
 async function carregarRegioes() {
     try {
-        const response = await fetch('data/regioes.json');
+        const responseUrl = new URL('../../../data/regioes.json', import.meta.url);
+        const response = await fetch(responseUrl);
+
+        if (!response.ok) {
+            throw new Error(`Falha ao obter regioes.json: ${response.status} ${response.statusText}`);
+        }
+
         const data = await response.json();
 
         const track = document.getElementById('locaisTrack');

@@ -5,7 +5,13 @@ export async function carregarPlantas() {
     if (!container) return;
 
     try {
-        const resposta = await fetch('data/plants.json');
+        const responseUrl = new URL('../../../data/plants.json', import.meta.url);
+        const resposta = await fetch(responseUrl);
+
+        if (!resposta.ok) {
+            throw new Error(`Falha ao obter plants.json: ${resposta.status} ${resposta.statusText}`);
+        }
+
         const plantas = await resposta.json();
 
         let htmlContent = '';
