@@ -1,3 +1,48 @@
+export async function carregarPlantas() {
+    const container = document.getElementById('container-plantas');
+    
+    // Evita erros caso a seção não exista na página atual
+    if (!container) return;
+
+    try {
+        const resposta = await fetch('data/plants.json');
+        const plantas = await resposta.json();
+
+        let htmlContent = '';
+
+        plantas.forEach(planta => {
+            // Verifica se tem badge para não criar tag vazia
+            const badgeHtml = planta.badge 
+                ? `<span class="planta__badge">${planta.badge}</span>` 
+                : '';
+
+            htmlContent += `
+                <div class="planta ${planta.classes}" data-animate="${planta.animacao}">
+                    <div class="planta__imagem">
+                        <img src="${planta.imagem}" alt="${planta.alt}">
+                        ${badgeHtml}
+                    </div>
+                    <div class="planta__descricao">
+                        <span class="planta__eyebrow">${planta.tipologia}</span>
+                        <h2 class="planta__nome">${planta.titulo}</h2>
+                        <p class="planta__texto">${planta.descricao}</p>
+                        <a href="${planta.ctaUrl}" class="planta__cta">${planta.ctaTexto}</a>
+                    </div>
+                </div>
+            `;
+        });
+
+        // Injeta tudo de uma vez para melhor performance
+        container.innerHTML = htmlContent;
+
+    } catch (erro) {
+        console.error('Erro ao carregar as plantas:', erro);
+        container.innerHTML = '<p>Erro ao carregar as plantas. Tente novamente mais tarde.</p>';
+    }
+}
+
+
+
 // ================================================================
 // plantas.js
 // Módulo de animação da section #plantas

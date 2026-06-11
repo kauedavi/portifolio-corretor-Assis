@@ -1,94 +1,67 @@
-{
-  "plantas": [
-    {
-      "id": "studio-1",
-      "variant": "default",
-      "theme": null,
-      "animate": "slide-left",
-      "image": {
-        "src": "./assets/img/plantas/studio.png",
-        "alt": "Planta Studio"
-      },
-      "badge": "Novo",
-      "eyebrow": "Tipologia",
-      "nome": "Studio",
-      "texto": "Um local compacto ideal para morar sozinho, a união de praticidade e conforto.",
-      "cta": {
-        "href": "#contato",
-        "text": "Saiba mais"
-      }
-    },
-    {
-      "id": "quarto-varanda-1",
-      "variant": "reverse",
-      "theme": "blue",
-      "animate": "slide-right",
-      "image": {
-        "src": "./assets/img/plantas/dormitorio-varanda.png",
-        "alt": "Planta 1 Quarto"
-      },
-      "badge": "Destaque",
-      "eyebrow": "Tipologia",
-      "nome": "1 Quarto e varanda",
-      "texto": "Espaço pensado para casais ou quem deseja um ambiente separado para descanso e trabalho.",
-      "cta": {
-        "href": "#contato",
-        "text": "Saiba mais"
-      }
-    },
-    {
-      "id": "dois-quartos",
-      "variant": "center",
-      "theme": null,
-      "animate": "fade-rise",
-      "image": {
-        "src": "./assets/img/plantas/dormitorio-varanda-2.png",
-        "alt": "Planta 2 Quartos"
-      },
-      "badge": "Premium",
-      "eyebrow": "Tipologia",
-      "nome": "2 Quartos",
-      "texto": "Ideal para famílias, com áreas bem distribuídas e acabamento de alto padrão.",
-      "cta": {
-        "href": "#contato",
-        "text": "Saiba mais"
-      }
-    },
-    {
-      "id": "studio-2",
-      "variant": "default",
-      "theme": "blue",
-      "animate": "slide-left",
-      "image": {
-        "src": "./assets/img/plantas/dormitorio-varandao-suite.png",
-        "alt": "Planta Studio"
-      },
-      "badge": "Novo",
-      "eyebrow": "Tipologia",
-      "nome": "Studio",
-      "texto": "Um local compacto ideal para morar sozinho, a união de praticidade e conforto.",
-      "cta": {
-        "href": "#contato",
-        "text": "Saiba mais"
-      }
-    },
-    {
-      "id": "quarto-varanda-2",
-      "variant": "reverse",
-      "theme": null,
-      "animate": "slide-right",
-      "image": {
-        "src": "./assets/img/plantas/dormitorio-varandao.png",
-        "alt": "Planta 1 Quarto"
-      },
-      "badge": "Destaque",
-      "eyebrow": "Tipologia",
-      "nome": "1 Quarto e varanda",
-      "texto": "Espaço pensado para casais ou quem deseja um ambiente separado para descanso e trabalho.",
-      "cta": {
-        "href": "#contato",
-        "text": "Saiba mais"
-      }
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "classes": "",
+    "animacao": "slide-left",
+    "imagem": "./assets/img/plantas/studio.png",
+    "alt": "Planta Studio",
+    "badge": "Novo",
+    "tipologia": "Tipologia",
+    "titulo": "Studio",
+    "descricao": "Um local compacto ideal para morar sozinho, a união de praticidade e conforto. (descrição generica)",
+    "ctaUrl": "#contato",
+    "ctaTexto": "Saiba mais"
+  },
+  {
+    "id": 2,
+    "classes": "planta--reverse blue",
+    "animacao": "slide-right",
+    "imagem": "./assets/img/plantas/dormitorio-varanda.png",
+    "alt": "Planta 1 Quarto",
+    "badge": "Destaque",
+    "tipologia": "Tipologia",
+    "titulo": "1 Quarto com varanda",
+    "descricao": "Espaço pensado para casais ou quem deseja um ambiente separado para descanso e trabalho. (descrição generica)",
+    "ctaUrl": "#contato",
+    "ctaTexto": "Saiba mais"
+  },
+  {
+    "id": 3,
+    "classes": "planta--center",
+    "animacao": "fade-rise",
+    "imagem": "./assets/img/plantas/dormitorio-varanda-2.png",
+    "alt": "Planta 2 Quartos",
+    "badge": "Premium",
+    "tipologia": "Tipologia",
+    "titulo": "2 Dormitórios com 2 Varandas",
+    "descricao": "Ideal para famílias, com áreas bem distribuídas e acabamento de alto padrão. (descrição generica)",
+    "ctaUrl": "#contato",
+    "ctaTexto": "Saiba mais"
+  },
+  {
+    "id": 4,
+    "classes": "blue",
+    "animacao": "slide-left",
+    "imagem": "./assets/img/plantas/dormitorio-varandao-suite.png",
+    "alt": "Planta Studio",
+    "badge": "Novo",
+    "tipologia": "Tipologia",
+    "titulo": "3 Dormitórios com Varandão e Suíte",
+    "descricao": "Um local compacto ideal para morar sozinho, a união de praticidade e conforto. (descrição generica)",
+    "ctaUrl": "#contato",
+    "ctaTexto": "Saiba mais"
+  },
+  {
+    "id": 5,
+    "classes": "planta--reverse",
+    "animacao": "slide-right",
+    "imagem": "./assets/img/plantas/dormitorio-varandao.png",
+    "alt": "Planta 1 Quarto",
+    "badge": "Destaque",
+    "tipologia": "Tipologia",
+    "titulo": "2 Dormitórios com 1 Varandão",
+    "descricao": "Espaço pensado para casais ou quem deseja um ambiente separado para descanso e trabalho. (descrição generica)",
+    "ctaUrl": "#contato",
+    "ctaTexto": "Saiba mais"
+  }
+]

@@ -1,36 +1,27 @@
-/**
- * app.js
- * Orquestra todos os módulos da aplicação
- */
-
 import { carregarRegioes } from './modules/regions-loader.js';
 import { initRegionCarousel } from './modules/region-carousel.js';
 import { toggleChat, toggleChatIg, initChatToggle } from './modules/chat-toggle.js';
 import { initTextAnimation } from './modules/text-animation.js';
 import { initMobileMenu } from './modules/mobile-menu.js';
-import{initPlantas} from './modules/plants-loader.js'
 
-// Exporta as funções para o escopo global (necessário para onclick no HTML)
+// Importe AS DUAS funções do seu módulo de plantas
+import { carregarPlantas, initPlantas } from './modules/plants-loader.js';
+
 window.toggleChat = toggleChat;
 window.toggleChatIg = toggleChatIg;
 window.initRegionCarousel = initRegionCarousel;
 
-// Inicializa a aplicação quando o DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Inicializa o sistema de chats
+// Transforme o callback do DOMContentLoaded em async
+document.addEventListener('DOMContentLoaded', async () => {
     initChatToggle();
-    
-    // 2. Carrega as regiões (que também chamará initRegionCarousel)
-    carregarRegioes();
-
-    // 3. Inicializa menu mobile
     initMobileMenu();
-
-    initPlantas()
     
-    // 4. Inicializa a animação de texto
+    // 1. Aguarda o download e a criação do HTML das plantas
+    await carregarPlantas(); 
+
+    // 2. SÓ DEPOIS inicializa o Observer (agora os elementos existem no DOM)
+    initPlantas();
+    
+    carregarRegioes(); // Se essa também usar fetch, lembre-se do await!
     initTextAnimation();
-
-    
-    
 });
