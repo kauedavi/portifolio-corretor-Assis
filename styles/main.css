@@ -1201,8 +1201,10 @@ footer {
 
 .planta--center {
   grid-template-columns: 1fr;
-  text-align: center;
   padding-inline: max(48px, (100% - 600px) / 2);
+}
+.planta--center .planta__nome {
+  text-align: left !important;
 }
 .planta--center .planta__imagem {
   order: 1;
@@ -1211,6 +1213,7 @@ footer {
 }
 .planta--center .planta__descricao {
   order: 2;
+  text-align: left;
 }
 .planta--center .planta__cta {
   margin-inline: auto;
@@ -1291,7 +1294,7 @@ footer {
 }
 
 .planta--center .planta__descricao {
-  align-items: center;
+  align-items: flex-start;
 }
 
 .planta__eyebrow {
