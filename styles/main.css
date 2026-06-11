@@ -860,7 +860,7 @@ header li a:hover {
 
 .corretor-headline .ch-label {
   display: block;
-  color: rgba(30, 20, 10, 0.603);
+  color: rgb(58, 58, 58);
   font-family: "Playfair Display", Georgia, serif;
   font-size: 0.5em;
   font-weight: 400;
@@ -893,7 +893,7 @@ header li a:hover {
 
 .corretor-headline .ch-sub {
   display: block;
-  color: rgba(30, 20, 10, 0.603);
+  color: rgb(58, 58, 58);
   font-size: 0.55em;
   font-style: italic;
   font-weight: 400;
