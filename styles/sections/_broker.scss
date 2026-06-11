@@ -1,16 +1,21 @@
+/* ============================================
+   CORRETOR TEXTO — VERSÃO FUNDO BRANCO
+   ============================================ */
+
 .corretor-texto {
-  background-color: var(--cor-primaria);
+  background-color: #ffffff;
   position: relative;
   overflow: hidden;
   min-height: 100vh;
 }
+
+/* --- Linhas decorativas de fundo --- */
 
 .corretor-bg-lines {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  display: none !important;
 }
 
 .corretor-bg-lines span {
@@ -21,9 +26,9 @@
   background: linear-gradient(
     to right,
     transparent 0%,
-    rgba(197, 168, 128, 0.12) 30%,
-    rgba(197, 168, 128, 0.22) 50%,
-    rgba(197, 168, 128, 0.12) 70%,
+    rgba(180, 140, 80, 0.12) 30%,
+    rgba(180, 140, 80, 0.22) 50%,
+    rgba(180, 140, 80, 0.12) 70%,
     transparent 100%
   );
 }
@@ -32,49 +37,186 @@
 .corretor-bg-lines span:nth-child(2) { top: 50%; }
 .corretor-bg-lines span:nth-child(3) { top: 75%; }
 
+/* --- Wrapper e track --- */
+
 .corretor-pin-wrapper {
   height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   overflow: hidden;
   position: relative;
   z-index: 1;
+  padding: 0 6vw;
+  box-sizing: border-box;
 }
 
 .corretor-track {
   display: flex;
   align-items: center;
-  will-change: transform;
-  padding: 0 10vw;
-  white-space: nowrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 2vw;
 }
 
+/* --- Headline principal --- */
+
 .corretor-headline {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3.5rem, 9vw, 9rem);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.2rem, 5.5vw, 5rem);
   font-weight: 700;
-  line-height: 1;
-  color: rgba(250, 250, 250, 0.08);
+  line-height: 1.1;
   letter-spacing: -0.01em;
-  white-space: nowrap;
+  text-align: center;
   user-select: none;
   margin: 0;
 }
 
-.corretor-headline .letra {
-  display: inline-block;
-  color: rgba(250, 250, 250, 0.08);
-  position: relative;
+/* Label: "Provérbios 10:22" */
+
+.corretor-headline .ch-label {
+  display: block;
+  color: rgba(30, 20, 10, 0.22);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.5em;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
 }
 
-.corretor-headline .letra-espaco {
-  display: inline-block;
-  width: 0.32em;
+/* Texto principal com gradiente animado — dourado claro */
+
+.corretor-headline .ch-main {
+  display: block;
+  background: linear-gradient(
+    90deg,
+    #c8a052 0%,
+    #f0d080  15%,
+    #c8a052 30%,
+    #f0d080 43%,
+    #fae8a0 50%,
+    #f0d080 57%,
+    #c8a052 70%,
+    #f0d080  85%,
+    #c8a052 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: corretorShimmer 10s ease-in-out infinite;
+}
+
+/* Linha divisória */
+
+.corretor-headline .ch-divider {
+  display: block;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #c8a052, transparent);
+  margin: 0.45em auto 0;
+}
+
+.corretor-headline .ch-divider.is-visible {
+  animation: corretorLine 1.8s ease forwards;
+}
+
+/* Subtítulo itálico */
+
+.corretor-headline .ch-sub {
+  display: block;
+  color: rgba(30, 20, 10, 0.18);
+  font-size: 0.55em;
+  font-style: italic;
+  font-weight: 400;
+  margin-top: 0.45em;
+}
+
+@keyframes corretorShimmer {
+  0%   { background-position: 120% 0; }
+  50%  { background-position: -20% 0; }
+  100% { background-position: 120% 0; }
+}
+
+@keyframes corretorLine {
+  to { width: 55%; }
+}
+
+@media (max-width: 1024px) {
+  .corretor-headline {
+    font-size: clamp(2rem, 5vw, 3.8rem);
+  }
+
+  .corretor-track {
+    max-width: 720px;
+  }
 }
 
 @media (max-width: 768px) {
+  .corretor-pin-wrapper {
+    padding: 0 8vw;
+  }
+
   .corretor-headline {
-    font-size: clamp(2.2rem, 10vw, 4rem);
+    font-size: clamp(1.8rem, 6.5vw, 3rem);
+  }
+
+  .corretor-headline .ch-label {
+    font-size: 0.48em;
+    letter-spacing: 0.14em;
+  }
+
+  .corretor-headline .ch-sub {
+    font-size: 0.52em;
+  }
+}
+
+@media (max-width: 480px) {
+  .corretor-pin-wrapper {
+    padding: 0 6vw;
+    height: 100svh;
+  }
+
+ @media (max-width: 480px) {
+  .corretor-headline {
+    font-size: clamp(1.6rem, 8vw, 2.4rem); /* antes */
+    font-size: clamp(2rem, 9.5vw, 3rem);   /* depois */
+  }
+}
+
+  .corretor-headline .ch-label {
+    font-size: 0.44em;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.6em;
+  }
+
+  .corretor-headline .ch-sub {
+    font-size: 0.5em;
+    margin-top: 0.5em;
+  }
+
+  .corretor-bg-lines span:nth-child(1) { top: 20%; }
+  .corretor-bg-lines span:nth-child(3) { top: 80%; }
+}
+
+@media (max-width: 360px) {
+  .corretor-headline {
+    font-size: clamp(1.4rem, 9vw, 2rem); /* antes */
+    font-size: clamp(1.8rem, 10vw, 2.4rem); /* depois */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .corretor-headline .ch-main {
+    animation: none;
+    background-position: 35% 0;
+  }
+
+  .corretor-headline .ch-divider.is-visible {
+    animation: none;
+    width: 55%;
   }
 }

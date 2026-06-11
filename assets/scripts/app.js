@@ -21,10 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 2. Carrega as regiões (que também chamará initRegionCarousel)
     carregarRegioes();
+
+    // 3. Inicializa menu mobile
+    initMobileMenu();
     
-    // 3. Inicializa a animação de texto
+    // 4. Inicializa a animação de texto
     initTextAnimation();
 
-    // 4. Inicializa menu mobile
-    initMobileMenu();
+    
 });
