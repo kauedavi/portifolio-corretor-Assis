@@ -1067,6 +1067,13 @@ header li a:hover {
   transition: transform 0.3s ease;
 }
 
+.pin-focus {
+  opacity: 0;
+  margin: 0;
+  height: 0;
+  width: 0;
+}
+
 footer {
   background: #0a1320;
   color: #aaa;
@@ -1220,6 +1227,7 @@ footer {
 }
 .planta.blue .planta__nome {
   color: #e8e2d6;
+  text-align: left;
 }
 .planta.blue .planta__texto {
   color: rgba(232, 226, 214, 0.65);

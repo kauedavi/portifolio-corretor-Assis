@@ -21,34 +21,55 @@
 // ================================================================
 
 // ── Tokens ──────────────────────────────────────────────────────
-$color-bg-light:   #f5f3ef;
-$color-bg-blue:    #0d1b2a;
-$color-accent:     #c9a84c;
+$color-bg-light: #f5f3ef;
+$color-bg-blue: #0d1b2a;
+$color-accent: #c9a84c;
 $color-accent-dim: rgba(#c9a84c, 0.15);
-$color-text-dark:  #1a1a1a;
+$color-text-dark: #1a1a1a;
 $color-text-muted: #5a5a5a;
 $color-text-light: #e8e2d6;
-$color-text-pale:  rgba(#e8e2d6, 0.65);
-$color-white:      #ffffff;
+$color-text-pale: rgba(#e8e2d6, 0.65);
+$color-white: #ffffff;
 
 $radius-badge: 4px;
-$transition:   0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
-$fade-height:  80px; // altura do degradê de transição entre faixas
+$transition: 0.72s cubic-bezier(0.22, 0.61, 0.36, 1);
+$fade-height: 80px; // altura do degradê de transição entre faixas
 
 // ── Keyframes das animações ──────────────────────────────────────
 @keyframes plantas-slide-left {
-  from { opacity: 0; transform: translateX(-60px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes plantas-slide-right {
-  from { opacity: 0; transform: translateX(60px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes plantas-fade-rise {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 // ── Section wrapper ──────────────────────────────────────────────
@@ -113,41 +134,56 @@ $fade-height:  80px; // altura do degradê de transição entre faixas
     // de transparente (cor atual) → para a cor da faixa seguinte
     // como não sabemos a cor vizinha no CSS puro, usamos uma máscara
     // de opacidade que suaviza a borda inferior de forma neutra
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(#000, 0.03) 100%
-    );
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(#000, 0.03) 100%);
     pointer-events: none;
   }
 
   // Estado inicial: oculto
   opacity: 0;
 
-  &[data-animate="slide-left"]  { transform: translateX(-60px); }
-  &[data-animate="slide-right"] { transform: translateX(60px); }
-  &[data-animate="fade-rise"]   { transform: translateY(40px); }
+  &[data-animate="slide-left"] {
+    transform: translateX(-60px);
+  }
+
+  &[data-animate="slide-right"] {
+    transform: translateX(60px);
+  }
+
+  &[data-animate="fade-rise"] {
+    transform: translateY(40px);
+  }
 
   &.planta--visible {
     &[data-animate="slide-left"] {
       animation: plantas-slide-left $transition forwards;
     }
+
     &[data-animate="slide-right"] {
       animation: plantas-slide-right $transition forwards;
     }
+
     &[data-animate="fade-rise"] {
       animation: plantas-fade-rise $transition forwards;
     }
   }
 
   // Sem borda lateral nas divs brancas (padrão)
-  &::before { display: none; }
+  &::before {
+    display: none;
+  }
 }
 
 // ── Variação: imagem à direita ────────────────────────────────────
 .planta--reverse {
-  .planta__imagem { order: 2; }
-  .planta__descricao { order: 1; }
+  .planta__imagem {
+    order: 2;
+  }
+
+  .planta__descricao {
+    order: 1;
+  }
 }
 
 // ── Variação: imagem acima (centralizada) ────────────────────────
@@ -178,16 +214,23 @@ $fade-height:  80px; // altura do degradê de transição entre faixas
 
   // Degradê inferior ajustado para o fundo azul
   &::after {
-    background: linear-gradient(
-      to bottom,
-      rgba($color-bg-blue, 0) 0%,
-      rgba($color-bg-blue, 0.04) 100%
-    );
+    background: linear-gradient(to bottom,
+        rgba($color-bg-blue, 0) 0%,
+        rgba($color-bg-blue, 0.04) 100%);
   }
 
-  .planta__eyebrow { color: $color-accent; }
-  .planta__nome    { color: $color-text-light; }
-  .planta__texto   { color: $color-text-pale; }
+  .planta__eyebrow {
+    color: $color-accent;
+  }
+
+  .planta__nome {
+    color: $color-text-light;
+    text-align: left;
+  }
+
+  .planta__texto {
+    color: $color-text-pale;
+  }
 
   .planta__badge {
     background: $color-accent;
@@ -321,9 +364,12 @@ $fade-height:  80px; // altura do degradê de transição entre faixas
     padding: 56px 24px;
 
     &[data-animate="slide-left"],
-    &[data-animate="slide-right"] { transform: translateY(30px); }
+    &[data-animate="slide-right"] {
+      transform: translateY(30px);
+    }
 
     &.planta--visible {
+
       &[data-animate="slide-left"],
       &[data-animate="slide-right"] {
         animation: plantas-fade-rise $transition forwards;
@@ -332,8 +378,13 @@ $fade-height:  80px; // altura do degradê de transição entre faixas
   }
 
   .planta--reverse {
-    .planta__imagem { order: 1; }
-    .planta__descricao { order: 2; }
+    .planta__imagem {
+      order: 1;
+    }
+
+    .planta__descricao {
+      order: 2;
+    }
   }
 
   .planta--center {
