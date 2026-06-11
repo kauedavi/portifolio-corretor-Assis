@@ -8,6 +8,7 @@ import { initRegionCarousel } from './modules/region-carousel.js';
 import { toggleChat, toggleChatIg, initChatToggle } from './modules/chat-toggle.js';
 import { initTextAnimation } from './modules/text-animation.js';
 import { initMobileMenu } from './modules/mobile-menu.js';
+import{initPlantas} from './modules/plants-loader.js'
 
 // Exporta as funções para o escopo global (necessário para onclick no HTML)
 window.toggleChat = toggleChat;
@@ -24,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Inicializa menu mobile
     initMobileMenu();
+
+    initPlantas()
     
     // 4. Inicializa a animação de texto
     initTextAnimation();
